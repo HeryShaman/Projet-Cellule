@@ -35,6 +35,11 @@ public abstract class EnemyBase : MonoBehaviour
         UpdateTargetScale();
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+
+    }
+
     public virtual void TakeDamage(float amount)
     {
         CurrentHealth -= amount;

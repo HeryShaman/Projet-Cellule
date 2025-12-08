@@ -31,6 +31,26 @@ public class EnemyHunter : EnemyBase
         timer = wanderTimer;
     }
 
+
+    private void OnTriggerStay(Collider other)
+    {
+        PlayerController player = other.GetComponent<PlayerController>();
+
+        if (player != null)
+        {
+            // Nouvelle logique : drain = la vie actuelle de la chasseuse
+            float drainAmount = CurrentHealth;
+
+            // 1. La chasseuse draine la stamina du joueur proportionnellement à sa vie
+            player.ReceiveDamage(drainAmount * Time.deltaTime);
+
+            // 2. La chasseuse reçoit des dégâts en fonction de la stamina actuelle du joueur
+            float playerDamage = player.CurrentStamina;
+            TakeDamage(playerDamage * Time.deltaTime);
+        }
+    }
+
+
     protected override void Update()
     {
         base.Update();

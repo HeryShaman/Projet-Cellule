@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{720AC947-EBC9-1F7A-6C2C-B3AAF802FB2E}</ProjectGuid>
+    <ProjectGuid>{06A341DC-549D-9F98-141A-1EA3FF2C5C63}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -62,17 +62,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\Camera\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Systems\ProceduralPlayerAnim.cs" />
     <Compile Include="Assets\Scripts\Managers\Game_Manager.cs" />
     <Compile Include="Assets\Scripts\Managers\SFXManager.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Player\Input\Game Input.cs" />
     <Compile Include="Assets\Scripts\Player\Input\InputReader.cs" />
     <Compile Include="Assets\Scripts\Enemies\Chasseuse.cs" />
-    <Compile Include="Assets\Scripts\Animation\ProceduralPlayerAnim.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Ennemies 2.0\EnemyBase2.0.cs" />
     <Compile Include="Assets\Scripts\Player\Controller\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Enemies\Transporteur.cs" />
     <Compile Include="Assets\Scripts\Enemies\SupportCell.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Ennemies 2.0\Entity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

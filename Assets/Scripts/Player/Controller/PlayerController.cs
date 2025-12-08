@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip[] clips;
 
-    private float CurrentCharge;
-    private float CurrentStamina;
+    public float CurrentCharge;
+    public float CurrentStamina;
 
     private Vector3 velocity;
     private Vector3 DashDir;
@@ -226,11 +226,8 @@ public class PlayerController : MonoBehaviour
         CurrentStamina = Mathf.Clamp(CurrentStamina, 0, MaxStamina);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void ReceiveDamage(float amount)
     {
-        if (collision.gameObject.tag == "Enemy")
-        {
-
-        }
+        CurrentStamina -= amount;
     }
 }
