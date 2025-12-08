@@ -42,6 +42,22 @@ public class EnemyReproducer : EnemyBase
         UpdateVisualState();
     }
 
+
+    private void OnTriggerStay(Collider other)
+    {
+        PlayerController player = other.GetComponent<PlayerController>();
+
+        if (player != null)
+        {
+            // La cellule infectée subit des dégâts via le joueur
+            if (currentState == EnemyState.Infected)
+            {
+                float playerDamage = player.CurrentStamina;
+                TakeDamage(playerDamage * Time.deltaTime);
+            }
+        }
+    }
+
     protected override void Update()
     {
         base.Update();

@@ -36,6 +36,19 @@ public class EnemyTransporter : EnemyBase
         player = FindFirstObjectByType<PlayerController>().transform;
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        PlayerController player = other.GetComponent<PlayerController>();
+
+        if (player != null)
+        {
+
+            // 2. La chasseuse reçoit des dégâts en fonction de la stamina actuelle du joueur
+            float playerDamage = player.CurrentStamina;
+            TakeDamage(playerDamage * Time.deltaTime);
+        }
+    }
+
     protected override void Update()
     {
         base.Update();
