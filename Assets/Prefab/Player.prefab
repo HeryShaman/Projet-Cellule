@@ -97,7 +97,7 @@ MonoBehaviour:
   DashCooldown: 0.1
   ChargeRate: 0
   MaxCharge: 0
-  RateStamina: 5
+  RateStamina: 1
   MaxStamina: 100
   IsCharging: 0
   IsDashing: 0
@@ -105,8 +105,12 @@ MonoBehaviour:
   RotationModel: 10
   MinScale: 0.5
   MaxScale: 2
+  clips: []
+  CurrentCharge: 0
+  CurrentStamina: 0
   cc: {fileID: 7162175263300639104}
   input: {fileID: 8288853038848835378}
+  Cam: {fileID: 0}
   Anim: {fileID: 3093219155464101883}
 --- !u!114 &8288853038848835378
 MonoBehaviour:

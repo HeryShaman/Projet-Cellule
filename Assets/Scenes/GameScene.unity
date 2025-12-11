@@ -1088,7 +1088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8959968224423852790, guid: 0409777888d047b4c89a7f9ac10d6082, type: 3}
       propertyPath: RateStamina
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8959968224423852790, guid: 0409777888d047b4c89a7f9ac10d6082, type: 3}
       propertyPath: clips.Array.size
@@ -1581,7 +1581,7 @@ MonoBehaviour:
   - {fileID: 143139995}
   reproducerPrefab: {fileID: 1556509479294117012, guid: 9de41460b17562d48acd2d6d646a4222, type: 3}
   spawnCountPerPoint: 1
-  maxNoInfectionTime: 1
+  maxNoInfectionTime: 2
 --- !u!4 &2012813359
 Transform:
   m_ObjectHideFlags: 0

@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639002748618444100
-    m_Hash: 2314407761
+      ticks: 639008811928037176
+    m_Hash: 2116335380
   m_LockFileStatus:
     m_FilePath: C:/Users/Heryr/Documents/Fichiers UNITY/Projet-Cellule/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639002748618675286
-    m_Hash: 1204294484
+      ticks: 639008811928466593
+    m_Hash: 4096887387
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -993,12 +993,12 @@ m_ResolvedPackages:
       scopePatternExpression: 
       message: 
       readMoreLink: 
-- packageId: com.unity.visualscripting@1.9.7
+- packageId: com.unity.visualscripting@1.9.9
   testable: 0
   isDirectDependency: 1
-  version: 1.9.7
+  version: 1.9.9
   source: 1
-  resolvedPath: C:\Users\Heryr\Documents\Fichiers UNITY\Projet-Cellule\Library\PackageCache\com.unity.visualscripting@6279e2b7c485
+  resolvedPath: C:\Users\Heryr\Documents\Fichiers UNITY\Projet-Cellule\Library\PackageCache\com.unity.visualscripting@191c0d7e3b69
   assetPath: Packages/com.unity.visualscripting
   name: com.unity.visualscripting
   displayName: Visual Scripting
@@ -1086,13 +1086,13 @@ m_ResolvedPackages:
   entitlements:
     licensingModel: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638835226812630000
+  datePublishedTicks: 638965671307960000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.visualscripting.git
-    revision: 8292335505915a41ec7c5cc8e08ac436e24120a9
+    revision: 2bb93a09becf00b2343d1c670afbf3836f170f55
     path: 
   unityLifecycle:
     version: 1.9.7
@@ -1105,18 +1105,12 @@ m_ResolvedPackages:
   git:
     hash: 
     revision: 
-  upmReserved: '{"changelog":"### Fixed\n- Fixed a warning \"Unable to load Unity.Android.Gradle''s
-    referenced assembly NiceIO\" when scanning assemblies. [UVSB-2594](https://issuetracker.unity3d.com/product/unity/issues/guid/UVSB-2594)\n-
-    Fixed error when trying to load fuzzy finder on multi screen setup on Mac. [UVSB-2419](https://issuetracker.unity3d.com/product/unity/issues/guid/UVSB-2419)\n-
-    Fixed the `AOTSafeMode` project setting appearing in the Editor Preferences window.
-    It is now shown in the Project Settings tab for Visual Scripting. [UVSB-2590](https://issuetracker.unity3d.com/product/unity/issues/guid/UVSB-2590)\n-
-    Fixed possible crash on VisionOS. [UVSB-2565](https://issuetracker.unity3d.com/product/unity/issues/guid/UVSB-2565)\n\n###
-    Changed\n- The `AOTSafeMode` project setting has been marked as not visible,
-    it will no longer be included when calling `ConfigurationPanel.GetSearchKeywords`.
-    [UVSB-2590](https://issuetracker.unity3d.com/product/unity/issues/guid/UVSB-2590)"}'
+  upmReserved: '{"changelog":"### Fixed\n- Fixed broken links to example codes in
+    API documentation.\n\n### Changed\n- Adds alt texts to images in documentation
+    to increase accessibility for screen readers."}'
   assetStore:
     productId: 
-  fingerprint: 6279e2b7c4858e56cca7f367cd38c49ef66778c9
+  fingerprint: 191c0d7e3b69bc0df1b6fed3a997c4c3a765ef6a
   editorCompatibility:
     compatibilityLevel: 0
     minimumPackageVersion: 1.9.7

@@ -136,8 +136,8 @@ MonoBehaviour:
   MaxSpawnCount: 10
   MinSpawnPerCycle: 2
   MaxSpawnPerCycle: 2
-  HealthCostPerSpawn: 6
-  SpawnInterval: 8
+  HealthCostPerSpawn: 2
+  SpawnInterval: 2
   MaxTransporterSpawn: 2
   MaxHunterSpawn: 3
   currentState: 0
