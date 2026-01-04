@@ -31,6 +31,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool IsCharging;
     [SerializeField] private bool IsDashing;
+    [SerializeField] private float DamageRegenDelay = 0.1f;
+    [SerializeField] private float LastDamageTime;
+    [SerializeField] private bool IsInsideWardenCollider;
+
+    [Header("Dash Enhancment")]
+    public float WardenSpeedMultiplier = 1.3f;
 
     [Header("Graphics")]
     public Transform PlayerModel;
@@ -48,10 +54,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 DashDir;
     private Vector2 wishvel;
 
-    [Header("R�f�rences")]
+    [Header("Références")]
     [SerializeField] private CharacterController cc; // cc = character controller
     [SerializeField] private InputReader input; // ir = input reader
-    [SerializeField] private CameraController Cam;
+    [SerializeField] public CameraController Cam;
     [SerializeField] private ProceduralPlayerAnim Anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -68,10 +74,11 @@ public class PlayerController : MonoBehaviour
 
         wishvel = input.MoveDirection;
 
-        if (input.DashPressedThisFrame)
+        // Empêcher charge/dash pendant un dash actif
+        if (input.DashPressedThisFrame && !IsDashing)
             IsCharging = true;
 
-        if (input.DashReleasedThisFrame)
+        if (input.DashReleasedThisFrame && !IsDashing)
             IsCharging = false;
     }
 
@@ -97,7 +104,7 @@ public class PlayerController : MonoBehaviour
             RegenerateStamina();
         }
 
-        // Quand la touche est rel�ch�e, on effectue le dash
+        // Quand la touche est relâchée, on effectue le dash
         if (CurrentCharge > 0.2f && !IsCharging && !IsDashing)
         {
             StartCoroutine(Dash(CurrentCharge));
@@ -121,8 +128,9 @@ public class PlayerController : MonoBehaviour
 
         #endregion
 
-        Debug.Log("Current Stamina:" + CurrentStamina);
-        Debug.Log(CurrentCharge);
+        //Debug.Log("Current Stamina:" + CurrentStamina);
+        Debug.Log(IsInsideWardenCollider);
+
 
         cc.Move(velocity * Time.deltaTime);
     }
@@ -131,12 +139,15 @@ public class PlayerController : MonoBehaviour
     {
     // Direction
         Vector3 Dir = transform.TransformDirection(new Vector3(wishvel.x, 0f, wishvel.y));
+        
+        // Vitesse augmentée si dans un warden (détecté par collider)
+        float currentMaxSpeed = IsInsideWardenCollider ? MaxSpeed * WardenSpeedMultiplier : MaxSpeed;
 
     // Acceleration
         if (wishvel.magnitude > 0.1f)
         {
-            velocity.x = Mathf.Lerp(velocity.x, Dir.x * MaxSpeed, Accel * Time.deltaTime);
-            velocity.z = Mathf.Lerp(velocity.z, Dir.z * MaxSpeed, Accel * Time.deltaTime);
+            velocity.x = Mathf.Lerp(velocity.x, Dir.x * currentMaxSpeed, Accel * Time.deltaTime);
+            velocity.z = Mathf.Lerp(velocity.z, Dir.z * currentMaxSpeed, Accel * Time.deltaTime);
         }
     // Friction
         else
@@ -177,14 +188,14 @@ public class PlayerController : MonoBehaviour
     {
         IsDashing = true;
 
-        // R�cup�re la direction du mouvement (si le joueur se d�place)
+        // Récupère la direction du mouvement (si le joueur se déplace)
         if (wishvel.magnitude > 0.1f)
         {
             DashDir = new Vector3(wishvel.x, 0f, wishvel.y).normalized;
         }
         else
         {
-            DashDir = transform.forward; // Si le joueur n'est pas en mouvement, dash dans la direction o� il regarde
+            DashDir = transform.forward; // Si le joueur n'est pas en mouvement, dash dans la direction où il regarde
         }
 
         // Appliquer la vitesse du dash
@@ -195,9 +206,6 @@ public class PlayerController : MonoBehaviour
             dashTime += Time.deltaTime;
             yield return null;
         }
-
-        // Apr�s le dash, revenir � la vitesse normale (ou appliquer une petite friction)
-        velocity *= Friction;
 
         // Cooldown entre les dashes
         yield return new WaitForSeconds(DashCooldown);
@@ -219,15 +227,47 @@ public class PlayerController : MonoBehaviour
 
     void RegenerateStamina()
     {
-        // Recharge Stamina
-        CurrentStamina = Mathf.MoveTowards(CurrentStamina, MaxStamina, Time.deltaTime * RateStamina);
+        // Vérifie si le délai après dégâts est écoulé
+        if (Time.time - LastDamageTime >= DamageRegenDelay)
+        {
+            // Recharge Stamina
+            CurrentStamina = Mathf.MoveTowards(CurrentStamina, MaxStamina, Time.deltaTime * RateStamina);
 
-        // Clamp min, max
-        CurrentStamina = Mathf.Clamp(CurrentStamina, 0, MaxStamina);
+            // Clamp min, max
+            CurrentStamina = Mathf.Clamp(CurrentStamina, 0, MaxStamina);
+        }
+    }
+
+    // Détecte l'entrée dans un warden (trigger)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<WardenEntity>() != null)
+        {
+            IsInsideWardenCollider = true;
+        }
+    }
+
+    // Détecte la sortie d'un warden (trigger)
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<WardenEntity>() != null)
+        {
+            IsInsideWardenCollider = false;
+        }
+    }
+
+    // Détecte en continu si on est dans un warden (plus précis pendant le dash)
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<WardenEntity>() != null)
+        {
+            IsInsideWardenCollider = true;
+        }
     }
 
     public void ReceiveDamage(float amount)
     {
         CurrentStamina -= amount;
+        LastDamageTime = Time.time; // Enregistre l'heure des dégâts
     }
 }

@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5742984541139972684}
   - component: {fileID: 5870849943269323343}
   - component: {fileID: 4622177267867363494}
-  - component: {fileID: 1694484533663896607}
+  - component: {fileID: 3205163295306018815}
+  - component: {fileID: 4785934975488547904}
   - component: {fileID: 1183381353783427362}
   m_Layer: 0
   m_Name: Chasseuse
@@ -110,7 +111,34 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1694484533663896607
+--- !u!54 &3205163295306018815
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6697464548979796304}
+  serializedVersion: 4
+  m_Mass: 0.1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &4785934975488547904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,22 +147,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6697464548979796304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a1651202e9c23c4da561af90b1f2b94, type: 3}
+  m_Script: {fileID: 11500000, guid: a777b237f4375e143b9783e3b6fd5ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 0
-  MaxHealth: 5
   CurrentHealth: 0
-  actionRadius: 10
+  MaxHealth: 5
+  RegenRateHealth: 0
   EnemyModel: {fileID: 1738273936625937631}
-  MinScale: 0.5
-  MaxScale: 1
-  ScaleSpeed: 5
-  rangeAroundReproducer: 10
-  rangeAroundTransporter: 8
-  attackRange: 12
-  detectionTransporterRange: 10
-  followDistanceBehind: 0
+  MinScale: {x: 0.5, y: 0.5, z: 0.5}
+  MaxScale: {x: 1.5, y: 1, z: 1.5}
+  DrainDamage: 0.1
+  SearchRadius: 6
+  CurrentState: 0
 --- !u!195 &1183381353783427362
 NavMeshAgent:
   m_ObjectHideFlags: 0

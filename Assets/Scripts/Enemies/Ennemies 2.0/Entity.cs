@@ -1,37 +1,23 @@
 using UnityEngine;
 
-
-
 public class Entity : MonoBehaviour
 {
-    [Header("Enemy Stats")]
+    [Header("Entity Stats")]
     public float CurrentHealth;
     public float MaxHealth;
+    public float RegenRateHealth;
 
-    [Header("Enemy Graphics")]
+    [Header("Entity Graphics")]
     public Transform EnemyModel;
-    public float MinScale;
-    public float MaxScale;
-    public enum EnemyStates
-    {
+    public Vector3 MinScale;
+    public Vector3 MaxScale;
 
-    }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         UpdateModelScale();
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        
     }
 
     public virtual void TakeDamage(float amount)
@@ -44,18 +30,24 @@ public class Entity : MonoBehaviour
         }
     }
 
-    void Die()
+    protected virtual void Die()
     {
-
+        Destroy(gameObject);
     }
 
     void UpdateModelScale()
     {
         // Clamp et Normalization du scale pour ajuster le scale
         float NormalizedScale = Mathf.Clamp01(CurrentHealth / MaxHealth);
-        float TargetScale = Mathf.Lerp(MinScale, MaxScale, NormalizedScale);
+        Vector3 TargetScale = Vector3.Lerp(MinScale, MaxScale, NormalizedScale);
 
         // Application du scale
-        EnemyModel.localScale = Vector3.one * TargetScale;
+        EnemyModel.localScale = TargetScale;
+    }
+
+    protected virtual void Regenerate()
+    {
+        if (CurrentHealth < MaxHealth)
+            CurrentHealth += RegenRateHealth * Time.deltaTime;
     }
 }

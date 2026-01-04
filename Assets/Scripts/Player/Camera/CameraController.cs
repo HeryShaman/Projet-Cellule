@@ -38,8 +38,6 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
-
-        if (Target == null) { Debug.LogWarning("Assignation Manquante"); return; }
     }
 
     void LateUpdate()
