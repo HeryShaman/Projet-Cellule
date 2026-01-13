@@ -8,11 +8,14 @@ public class ReproducerEntity : Entity
     public int SpawnHunterLimit = 5;
     public int SpawnMessengerLimit = 3;
 
-    [SerializeField] private float SpawnCooldown = 5.0f;
+    [SerializeField] private float HealthySpawnCooldown = 5.0f;
+    [SerializeField] private float InfectedSpawnCooldown = 3.0f;
     [SerializeField] private float SpawnTimer;
 
     private int SpawnedHunters = 0;
     private int SpawnedMessengers = 0;
+    private int CurrentHunters = 0;
+    private int CurrentMessengers = 0;
 
     [Header("References")]
     public GameObject HunterEntity;
@@ -65,13 +68,20 @@ public class ReproducerEntity : Entity
 
         SpawnTimer += Time.deltaTime;
 
+        // Mettre à jour les compteurs actuels depuis le GameManager
+        if (Spawner != null)
+        {
+            CurrentHunters = Spawner.ActiveHunters.Count;
+            CurrentMessengers = Spawner.ActiveMessengers.Count;
+        }
+
         // Logique d'Apparition Saine
         if (CurrentState == States.Healthy)
         {
             HealthySpawnLogic();
         }
 
-        // Logique d'Apparition Infect�
+        // Logique d'Apparition Infecté
         else if (CurrentState == States.Infected)
         {
             InfectedSpawnLogic();
@@ -98,7 +108,7 @@ public class ReproducerEntity : Entity
 
     void InfectedSpawnLogic()
     {
-        if (SpawnTimer < SpawnCooldown)
+        if (SpawnTimer < InfectedSpawnCooldown)
             return;
 
         if (CurrentHealth < SpawnHealthCost)
@@ -106,33 +116,40 @@ public class ReproducerEntity : Entity
 
         CurrentHealth -= SpawnHealthCost;
 
-        GameObject entityToSpawn = (Random.value > 0.5f) ? HunterEntity : MessengerEntity;
+        GameObject entityToSpawn;
+        int limit;
 
-        // Vérifie les limites individuelles
-        if (entityToSpawn == HunterEntity && SpawnedHunters >= SpawnHunterLimit)
-            entityToSpawn = MessengerEntity;
-        else if (entityToSpawn == MessengerEntity && SpawnedMessengers >= SpawnMessengerLimit)
-            entityToSpawn = HunterEntity;
+        switch (Random.Range(0, 2))
+        {
+            case 0:
+                entityToSpawn = HunterEntity;
+                limit = SpawnHunterLimit;
+                break;
+            case 1:
+                entityToSpawn = MessengerEntity;
+                limit = SpawnMessengerLimit;
+                break;
+            default:
+                return;
+        }
 
-        // Si aucune limite disponible, ne spawn pas
-        if ((entityToSpawn == HunterEntity && SpawnedHunters >= SpawnHunterLimit) ||
-            (entityToSpawn == MessengerEntity && SpawnedMessengers >= SpawnMessengerLimit))
-            return;
+        if ((entityToSpawn == HunterEntity && CurrentHunters < limit) ||
+            (entityToSpawn == MessengerEntity && CurrentMessengers < limit))
+        {
+            Instantiate(entityToSpawn, transform.position + new Vector3(Random.Range(-3f, 3f), 0, Random.Range(-3f, 3f)), Quaternion.identity);
 
-        // Compte l'entité spawnée
-        if (entityToSpawn == HunterEntity)
-            SpawnedHunters++;
-        else if (entityToSpawn == MessengerEntity)
-            SpawnedMessengers++;
-
-        Instantiate(entityToSpawn, transform.position + new Vector3(Random.Range(-3f, 3f), 0, Random.Range(-3f, 3f)), Quaternion.identity);
+            if (entityToSpawn == HunterEntity)
+                SpawnedHunters++;
+            else
+                SpawnedMessengers++;
+        }
 
         SpawnTimer = 0f;
     }
 
     void HealthySpawnLogic()
     {
-        if (SpawnTimer < SpawnCooldown)
+        if (SpawnTimer < HealthySpawnCooldown)
             return;
 
         if (CurrentHealth < SpawnHealthCost)

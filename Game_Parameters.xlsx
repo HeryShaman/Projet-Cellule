@@ -1,0 +1,35 @@
+Catégorie;Script;Variable;Valeur par défaut;Description;Unité;Impact sur le gameplay
+JOUEUR;PlayerController;MaxSpeed;5f;Vitesse de déplacement maximale du joueur;unités/seconde;Plus élevé = déplacement plus rapide
+JOUEUR;PlayerController;Accel;5f;Accélération du joueur;unités/seconde²;Plus élevé = accélération plus rapide
+JOUEUR;PlayerController;Friction;0.5f;Friction appliquée quand le joueur ne bouge pas;coefficient;Plus élevé = ralentissement plus rapide
+JOUEUR;PlayerController;Gravity;9f;Force de gravité appliquée au joueur;unités/seconde²;Plus élevé = chute plus rapide
+JOUEUR;PlayerController;DashSpeed;[non défini];Vitesse pendant le dash;unités/seconde;Plus élevé = dash plus rapide
+JOUEUR;PlayerController;DashTime;[non défini];Durée du dash;secondes;Plus élevé = dash plus long
+JOUEUR;PlayerController;DashCooldown;0.5f;Temps d'attente entre les dashs;secondes;Plus élevé = dashs moins fréquents
+JOUEUR;PlayerController;ChargeRate;0.1f;Vitesse de charge du dash;unités/seconde;Plus élevé = charge plus rapide
+JOUEUR;PlayerController;MaxCharge;1f;Charge maximale du dash;unités;Plus élevé = dash plus puissant
+JOUEUR;PlayerController;RateStamina;5f;Taux de régénération de stamina;unités/seconde;Plus élevé = régénération plus rapide
+JOUEUR;PlayerController;MaxStamina;100f;Stamina maximale du joueur;unités;Plus élevé = plus de stamina disponible
+JOUEUR;PlayerController;DamageRegenDelay;0.1f;Délai avant régénération après dégâts;secondes;Plus élevé = attente plus longue
+JOUEUR;PlayerController;WardenSpeedMultiplier;1.3f;Multiplicateur de vitesse dans les wardens;coefficient;Plus élevé = bonus de vitesse plus grand
+
+ENTITÉS;Entity;MaxHealth;[non défini];Santé maximale des entités;unités;Plus élevé = entités plus résistantes
+ENTITÉS;Entity;RegenRateHealth;[non défini];Taux de régénération de santé;unités/seconde;Plus élevé = régénération plus rapide
+
+HUNTER;HunterEntity;DrainDamage;0.1f;Dégâts continus infligés;unités/seconde;Plus élevé = dégâts plus élevés
+HUNTER;HunterEntity;SearchRadius;6f;Rayon de recherche des cibles;unités;Plus élevé = détection plus large
+
+MESSENGER;MessengerEntity;RegenerateRadius;3f;Rayon de régénération;unités;Plus élevé = zone de soin plus grande
+MESSENGER;MessengerEntity;MaxHunterHost;5;Nombre maximum de hunters hébergés;unités;Plus élevé = plus de hunters possibles
+
+REPRODUCER;ReproducerEntity;SpawnHealthCost;[non défini];Coût en santé pour spawn;unités;Plus élevé = spawn plus coûteux
+REPRODUCER;ReproducerEntity;SpawnInterval;[non défini];Intervalle entre les spawns;secondes;Plus élevé = spawns moins fréquents
+REPRODUCER;ReproducerEntity;SpawnHunterLimit;5;Limite de hunters par cellule;unités;Plus élevé = plus de hunters possibles
+REPRODUCER;ReproducerEntity;SpawnMessengerLimit;3;Limite de messengers par cellule;unités;Plus élevé = plus de messengers possibles
+REPRODUCER;ReproducerEntity;SpawnCooldown;5f;Cooldown entre les spawns;secondes;Plus élevé = spawns moins fréquents
+
+WARDEN;WardenEntity;[non défini];[non défini];[non défini];[non défini];[non défini]
+
+GAME MANAGER;GameManager;MaxHunter;20;Nombre maximum de hunters globaux;unités;Plus élevé = plus de hunters possibles
+GAME MANAGER;GameManager;MaxMessenger;10;Nombre maximum de messengers globaux;unités;Plus élevé = plus de messengers possibles
+GAME MANAGER;GameManager;MaxWarden;15;Nombre maximum de wardens globaux;unités;Plus élevé = plus de wardens possibles

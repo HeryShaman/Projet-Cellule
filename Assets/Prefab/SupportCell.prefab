@@ -157,12 +157,14 @@ MonoBehaviour:
   MaxScale: {x: 2, y: 2, z: 2}
   SpawnHealthCost: 2
   SpawnInterval: 0
-  ActionRadius: 0
-  SpawnCooldown: 5
+  SpawnHunterLimit: 5
+  SpawnMessengerLimit: 3
+  HealthySpawnCooldown: 5
+  InfectedSpawnCooldown: 3
   SpawnTimer: 0
   HunterEntity: {fileID: 6697464548979796304, guid: b1639930d7ecd5f4a97c5b8533f2f6b3, type: 3}
   MessengerEntity: {fileID: 6701230996886309562, guid: f90e82520420cb649962e50e261ffa5e, type: 3}
   WardenEntity: {fileID: 434199223026733806, guid: 31bf7058730eae54cb8cdf87f5e9feab, type: 3}
   HealthyMaterial: {fileID: 2100000, guid: e7fb0c5c749795c4e8c14d1b6532114d, type: 2}
-  InfectedMaterial: {fileID: 2100000, guid: d9682e740897f084a90ab147f006629a, type: 2}
+  InfectedMaterial: {fileID: -876546973899608171, guid: 4654b1b9eed3e974fb321fcffddf4f1d, type: 3}
   CurrentState: 0

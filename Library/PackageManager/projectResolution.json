@@ -58,6 +58,16 @@
       "source": "builtin",
       "testable": false
     },
+    "com.unity.postprocessing@3.5.1": {
+      "name": "com.unity.postprocessing",
+      "displayName": "Post Processing",
+      "resolvedPath": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Library\\PackageCache\\com.unity.postprocessing@4a41da475b74",
+      "fingerprint": "4a41da475b743ff131a9cfa5fdb2ff80d2c0f2d4",
+      "editorCompatibility": "2019.4.19f1",
+      "version": "3.5.1",
+      "source": "registry",
+      "testable": false
+    },
     "com.unity.shadergraph@17.0.4": {
       "name": "com.unity.shadergraph",
       "displayName": "Shader Graph",

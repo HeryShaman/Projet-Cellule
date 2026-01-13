@@ -10,10 +10,7 @@ public class InputReader : MonoBehaviour
     // Move
     public Vector2 MoveDirection => move.action.ReadValue<Vector2>();
 
-    // Dash
-    public bool DashPressedThisFrame => dash.action.WasPressedThisFrame();
     public bool DashHeld => dash.action.IsPressed();
-    public bool DashReleasedThisFrame => dash.action.WasReleasedThisFrame();
 
     private void OnEnable()
     {

@@ -15,21 +15,14 @@ public class PlayerController : MonoBehaviour
     public float Gravity = 9f;
 
     [Header("Dash")]
-    public float DashSpeed;
-    public float DashTime;
-
-    public float DashCooldown = 0.5f;
-
-    [Header("Charge")]
-    public float ChargeRate = 0.1f;
-    public float MaxCharge = 1f;
+    public float DashSpeed = 10f;
+    public float DashTime = 0.0f;
+    public float DashCooldown = 0.2f;
 
     [Header("Stamina")]
     public float RateStamina = 5f;
     public float MaxStamina = 100f;
 
-
-    [SerializeField] private bool IsCharging;
     [SerializeField] private bool IsDashing;
     [SerializeField] private float DamageRegenDelay = 0.1f;
     [SerializeField] private float LastDamageTime;
@@ -47,7 +40,6 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip[] clips;
 
-    public float CurrentCharge;
     public float CurrentStamina;
 
     private Vector3 velocity;
@@ -73,13 +65,6 @@ public class PlayerController : MonoBehaviour
         wishvel = Vector2.zero;
 
         wishvel = input.MoveDirection;
-
-        // Empêcher charge/dash pendant un dash actif
-        if (input.DashPressedThisFrame && !IsDashing)
-            IsCharging = true;
-
-        if (input.DashReleasedThisFrame && !IsDashing)
-            IsCharging = false;
     }
 
     // Update is called once per frame
@@ -89,33 +74,19 @@ public class PlayerController : MonoBehaviour
 
         ModelScale();
 
-
-        #region Gestion Dash/ Charge
-        if (IsCharging)
+        // Quand la touche est relâchée, on effectue le dash
+        if (input.DashHeld && !IsDashing)
         {
-
-            Cam.CameraZoom(Cam.OriginalFov + 8f, 5f);
-            Cam.CameraShaking(0.04f, 1f);
-            ChargeDash();
-            Anim.MoveAnim(wishvel);
+            StartCoroutine(Dash());
         }
         else
         {
             RegenerateStamina();
         }
 
-        // Quand la touche est relâchée, on effectue le dash
-        if (CurrentCharge > 0.2f && !IsCharging && !IsDashing)
-        {
-            StartCoroutine(Dash(CurrentCharge));
-            CurrentStamina = Mathf.Clamp(CurrentStamina - CurrentCharge, 0, MaxStamina);
-            CurrentCharge = 0.0f;
-        }
-        #endregion
-
         #region Movement Logic
 
-        if (cc.isGrounded && !IsCharging && !IsDashing)
+        if (cc.isGrounded && !IsDashing)
         {
             Move();
             Cam.CameraZoom(Cam.OriginalFov, 10f);
@@ -167,24 +138,8 @@ public class PlayerController : MonoBehaviour
         velocity.y -= Gravity * Time.deltaTime;
     }
 
-    void ChargeDash()
-    {
-        velocity.x = 0;
-        velocity.z = 0;
 
-        //Clamp Min
-        if (CurrentCharge < 0.2f)
-        {
-            CurrentCharge = 0.2f;
-        }
-
-        // Logique de charge
-        CurrentCharge = Mathf.MoveTowards(CurrentCharge, MaxCharge, Time.deltaTime * ChargeRate);
-        Debug.Log(CurrentCharge);
-    }
-
-
-    IEnumerator Dash(float DashPeriod)
+    IEnumerator Dash()
     {
         IsDashing = true;
 
@@ -200,7 +155,7 @@ public class PlayerController : MonoBehaviour
 
         // Appliquer la vitesse du dash
         float dashTime = 0f;
-        while (dashTime < DashPeriod)
+        while (dashTime < DashTime)
         {
             velocity = DashDir * DashSpeed;
             dashTime += Time.deltaTime;
