@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6758735772701705031}
   - component: {fileID: 2176353235704055770}
   - component: {fileID: 3202710924283127855}
-  - component: {fileID: 8158056885304668968}
-  - component: {fileID: 775862287617768513}
+  - component: {fileID: 7636998405268754781}
   - component: {fileID: 2516871796876497852}
+  - component: {fileID: 775862287617768513}
   - component: {fileID: 7409882385585885152}
   m_Layer: 0
   m_Name: Messenger
@@ -90,8 +90,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8158056885304668968
-CapsuleCollider:
+--- !u!135 &7636998405268754781
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,11 +108,33 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2516871796876497852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6701230996886309562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143b78a01d394884b8b9866169992aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 0
+  MaxHealth: 5
+  RegenRateHealth: 1
+  EnemyModel: {fileID: 6758735772701705031}
+  MinScale: {x: 0.1, y: 0.1, z: 0.1}
+  MaxScale: {x: 1.2, y: 1, z: 1.2}
+  DrainDamage: 0.1
+  DetectionRadius: 8
+  PathRecalculationInterval: 0.5
+  MaxHunters: 3
+  CurrentHunters: 0
+  CurrentState: 0
 --- !u!54 &775862287617768513
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,33 +158,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &2516871796876497852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6701230996886309562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 143b78a01d394884b8b9866169992aec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentHealth: 0
-  MaxHealth: 5
-  RegenRateHealth: 1
-  EnemyModel: {fileID: 6758735772701705031}
-  MinScale: {x: 0.1, y: 0.1, z: 0.1}
-  MaxScale: {x: 1.2, y: 1, z: 1.2}
-  DrainDamage: 0.1
-  RegenerateRadius: 3
-  MaxHunterHost: 5
-  CurrentState: 0
-  CurrentHunters: 0
 --- !u!195 &7409882385585885152
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -172,14 +171,14 @@ NavMeshAgent:
   m_GameObject: {fileID: 6701230996886309562}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 3
+  m_Radius: 0.5
   m_Speed: 6
-  m_Acceleration: 4
+  m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 300
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1

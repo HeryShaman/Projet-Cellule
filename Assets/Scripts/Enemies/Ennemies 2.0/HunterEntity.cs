@@ -7,20 +7,23 @@ public class HunterEntity : Entity
     [Header("Settings")]
     public float DrainDamage = 0.1f;
     public float SearchRadius = 6f;
+    public float PatrolRadius = 8f;
 
     private Transform Target;
     private NavMeshAgent Agent;
     private GameManager Spawner;
+    private ReproducerEntity OriginInfectedCell;
+    private MessengerEntity MessengerHost;
 
     public enum States
     {
         SearchInfectedCell,
-        SearchMessengerNearCell,
-        FollowMessenger,
+        PatrolAroundCell,
         AttackEntity
     }
 
     public States CurrentState = States.SearchInfectedCell;
+    private Vector3 patrolCenter;
 
     private void Start()
     {
@@ -30,6 +33,11 @@ public class HunterEntity : Entity
         CurrentState = States.SearchInfectedCell;
     }
 
+    public void SetMessengerHost(MessengerEntity messenger)
+    {
+        MessengerHost = messenger;
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -37,7 +45,7 @@ public class HunterEntity : Entity
         // Vérifie si le Hunter doit mourir
         if (CurrentHealth <= 0)
         {
-            Die();
+            RemoveHunter();
             return;
         }
 
@@ -47,12 +55,8 @@ public class HunterEntity : Entity
                 SearchInfectedCell();
                 break;
 
-            case States.SearchMessengerNearCell:
-                SearchMessengerNearCell();
-                break;
-
-            case States.FollowMessenger:
-                FollowMessenger();
+            case States.PatrolAroundCell:
+                PatrolAroundCell();
                 break;
 
             case States.AttackEntity:
@@ -117,14 +121,20 @@ public class HunterEntity : Entity
 
         if (closestInfected != null)
         {
-            Target = closestInfected.transform;
-            Agent.SetDestination(Target.position);
-            CurrentState = States.SearchMessengerNearCell;
+            OriginInfectedCell = closestInfected;
+            patrolCenter = closestInfected.transform.position;
+            CurrentState = States.PatrolAroundCell;
         }
     }
 
-    void SearchMessengerNearCell()
+    void PatrolAroundCell()
     {
+        if (OriginInfectedCell == null || OriginInfectedCell.CurrentState != ReproducerEntity.States.Infected)
+        {
+            CurrentState = States.SearchInfectedCell;
+            return;
+        }
+
         // Vérifie d'abord si un joueur ou warden est à proximité (priorité absolue)
         Collider[] targets = Physics.OverlapSphere(transform.position, SearchRadius);
         PlayerController player = null;
@@ -153,84 +163,16 @@ public class HunterEntity : Entity
             return;
         }
 
-        // Cherche un messager dans le rayon de SearchRadius autour de la cellule infectée ciblée
-        if (Target == null)
+        // Patrouiller autour de la cellule infectée
+        if (Agent.remainingDistance < 1f)
         {
-            CurrentState = States.SearchInfectedCell;
-            return;
-        }
-
-        Collider[] messengers = Physics.OverlapSphere(Target.position, SearchRadius);
-        MessengerEntity closestMessenger = null;
-        float minDist = float.MaxValue;
-
-        foreach (Collider messenger in messengers)
-        {
-            MessengerEntity entity = messenger.GetComponent<MessengerEntity>();
-            if (entity != null)
-            {
-                float distToCell = Vector3.Distance(entity.transform.position, Target.position);
-                if (distToCell <= SearchRadius && distToCell < minDist)
-                {
-                    minDist = distToCell;
-                    closestMessenger = entity;
-                }
-            }
-        }
-
-        if (closestMessenger != null)
-        {
-            Target = closestMessenger.transform;
-            CurrentState = States.FollowMessenger;
-        }
-        else
-        {
-            // Mouvement aléatoire autour de la cellule infectée pour un côté plus vivant
-            Vector3 randomOffset = new Vector3(
-                Random.Range(-SearchRadius, SearchRadius),
-                0,
-                Random.Range(-SearchRadius, SearchRadius)
-            );
-            Vector3 randomPosition = Target.position + randomOffset;
+            Vector3 randomPoint = patrolCenter + Random.insideUnitSphere * PatrolRadius;
+            randomPoint.y = patrolCenter.y;
             
-            Agent.SetDestination(randomPosition);
-        }
-    }
-
-    void FollowMessenger()
-    {
-        if (Target == null)
-        {
-            CurrentState = States.SearchMessengerNearCell;
-            return;
-        }
-
-        Agent.SetDestination(Target.position);
-
-        // Vérifie si un joueur ou warden est dans le rayon d'attaque
-        Collider[] targets = Physics.OverlapSphere(transform.position, SearchRadius);
-        PlayerController player = null;
-        WardenEntity warden = null;
-
-        foreach (Collider target in targets)
-        {
-            player = target.GetComponent<PlayerController>();
-            warden = target.GetComponent<WardenEntity>();
-            if (player != null || warden != null)
+            if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, PatrolRadius, NavMesh.AllAreas))
             {
-                break;
+                Agent.SetDestination(hit.position);
             }
-        }
-
-        if (player != null)
-        {
-            Target = player.transform;
-            CurrentState = States.AttackEntity;
-        }
-        else if (warden != null)
-        {
-            Target = warden.transform;
-            CurrentState = States.AttackEntity;
         }
     }
 
@@ -238,19 +180,18 @@ public class HunterEntity : Entity
     {
         if (Target == null)
         {
-            CurrentState = States.SearchMessengerNearCell;
+            CurrentState = States.PatrolAroundCell;
             return;
         }
 
         Agent.SetDestination(Target.position);
 
         float dist = Vector3.Distance(transform.position, Target.position);
-        if (dist > SearchRadius)
+        if (dist > SearchRadius * 2f)
         {
-            CurrentState = States.SearchMessengerNearCell;
+            CurrentState = States.PatrolAroundCell;
         }
     }
-
 
     private void OnTriggerStay(Collider other)
     {
@@ -267,6 +208,14 @@ public class HunterEntity : Entity
         {
             warden.TakeDamage(DrainDamage);
             TakeDamage(DrainDamage);
+        }
+    }
+
+    void RemoveHunter()
+    {
+        if (MessengerHost != null)
+        {
+            MessengerHost.RemoveHunter();
         }
     }
 }

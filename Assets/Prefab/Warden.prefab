@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5336727708913634448}
   - component: {fileID: 1870451998089186552}
   - component: {fileID: 4144187308275597945}
-  - component: {fileID: 3202022483137160935}
   - component: {fileID: 1635315295012486642}
+  - component: {fileID: 3202022483137160935}
   - component: {fileID: 7405936391073510032}
   m_Layer: 0
   m_Name: Warden
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fac6acb1b4c83594fa473e6ac712e09c, type: 2}
+  - {fileID: 2100000, guid: dc56ab38eb72e0848bf033d44b4fbdff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,6 +111,30 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &1635315295012486642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434199223026733806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d779878e2b9094da07b09bb37539b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 0
+  MaxHealth: 3
+  RegenRateHealth: 1
+  EnemyModel: {fileID: 5848472064600780822}
+  MinScale: {x: 1, y: 1, z: 1}
+  MaxScale: {x: 4, y: 1, z: 4}
+  MaxSpeed: 5
+  MaxDistanceFromCell: 15
+  GuardRadius: 8
+  ChaseSpeedMultiplier: 2
+  PatrolRadius: 5
+  CurrentState: 0
 --- !u!54 &3202022483137160935
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,29 +158,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1635315295012486642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 434199223026733806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9d779878e2b9094da07b09bb37539b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentHealth: 0
-  MaxHealth: 5
-  RegenRateHealth: 1
-  EnemyModel: {fileID: 5848472064600780822}
-  MinScale: {x: 1, y: 0.5, z: 1}
-  MaxScale: {x: 16, y: 1.5, z: 16}
-  CurrentState: 0
 --- !u!195 &7405936391073510032
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -166,7 +171,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 434199223026733806}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.2
+  m_Radius: 0.1
   m_Speed: 2
   m_Acceleration: 82
   avoidancePriority: 25

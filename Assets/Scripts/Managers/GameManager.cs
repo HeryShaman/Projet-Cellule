@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int MaxHunter = 20;
     public int MaxMessenger = 10;
     public int MaxWarden = 15;
+    public bool AutoSpawnPlayer = true;
 
     public Vector3 PlayerSpawn;
 
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject CellPrefab;
     public GameObject PlayerPrefab;
+    public GameObject PlayerMotherShipPrefab;
 
     [Header("Propagation Settings")]
     public int CellNumbersPerSpawn;
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (Object.FindAnyObjectByType<PlayerController>() == null)
+        if (AutoSpawnPlayer && Object.FindAnyObjectByType<PlayerController>() == null)
         {
             SpawnPlayer();
         }
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
         // Vérifie en temps réel l'état des cellules et met à jour les listes
         UpdateCellLists();
-
+        
         // Gère le timer d'infection
         InfectionTimer += Time.deltaTime;
     }
@@ -129,21 +131,55 @@ public class GameManager : MonoBehaviour
         GameObject player = Instantiate(PlayerPrefab, PlayerSpawn, Quaternion.identity);
         player.name = "Player";
 
-        // Assigne automatiquement la caméra au joueur
-        CameraController cam = Object.FindAnyObjectByType<CameraController>();
-        if (cam != null)
+        // Assigner l'InputReader directement depuis le prefab
+        InputReader inputReader = Object.FindAnyObjectByType<InputReader>();
+        if (inputReader != null)
         {
-            cam.Target = player.transform;
+            PlayerController pc = player.GetComponent<PlayerController>();
+            if (pc != null)
+            {
+                pc.input = inputReader;
+                Debug.Log("InputReader assigné au PlayerController");
+            }
         }
-
-        // Assigne aussi la référence de la caméra au PlayerController si besoin
-        PlayerController pc = player.GetComponent<PlayerController>();
-        if (pc != null && cam != null)
+        else
         {
-            pc.Cam = cam;
+            Debug.LogError("Aucun InputReader trouvé dans la scène !");
         }
-
+        
+        Debug.Log("Joueur spawn");
         return player;
+    }
+    
+    // Méthode publique pour faire apparaître le joueur manuellement
+    [ContextMenu("Faire apparaître le joueur")]
+    public void SpawnPlayerManually()
+    {
+        if (Object.FindAnyObjectByType<PlayerController>() == null)
+        {
+            SpawnPlayer();
+            Debug.Log("Joueur spawn manuellement via le GameManager");
+        }
+        else
+        {
+            Debug.LogWarning("Un joueur existe déjà dans la scène !");
+        }
+    }
+    
+    // Méthode pour supprimer le joueur actuel
+    [ContextMenu("Supprimer le joueur")]
+    public void RemovePlayer()
+    {
+        PlayerController player = Object.FindAnyObjectByType<PlayerController>();
+        if (player != null)
+        {
+            DestroyImmediate(player.gameObject);
+            Debug.Log("Joueur supprimé manuellement via le GameManager");
+        }
+        else
+        {
+            Debug.LogWarning("Aucun joueur à supprimer !");
+        }
     }
 
     private void OnDrawGizmos()

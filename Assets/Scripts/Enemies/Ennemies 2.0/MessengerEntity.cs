@@ -6,82 +6,89 @@ public class MessengerEntity : Entity
 {
     [Header("Messenger Settings")]
     public float DrainDamage = 0.1f;
-    public float RegenerateRadius = 3f;
-    public int MaxHunterHost = 5;
-
+    public float DetectionRadius = 8f;
+    public float WardenAvoidRadius = 1f;
+    public float PathRecalculationInterval = 0.5f;
+    public int MaxHunters = 3;
+    
     [Header("References")]
     private Vector3 Target;
     private NavMeshAgent Agent;
-    private GameManager Spawner;
+    private Vector3 lastTargetPosition;
+    private float lastPathRecalculation;
+    private ReproducerEntity[] allCells;
+    
+    public int CurrentHunters = 0;
 
     public enum States
     {
-        Regenerate,
-        GoToInfect,
-        GoToRetreat
+        Contaminating,
+        Fleeing
     }
 
-    public States CurrentState = States.GoToInfect;
-    public int CurrentHunters = 0;
+    public States CurrentState = States.Contaminating;
 
     private void Start()
     {
         base.CurrentHealth = base.MaxHealth;
         Agent = GetComponent<NavMeshAgent>();
-        Spawner = FindAnyObjectByType<GameManager>();
+        // Récupérer toutes les cellules au démarrage
+        allCells = FindObjectsByType<ReproducerEntity>(FindObjectsSortMode.None);
     }
 
     protected override void Update()
     {
         base.Update();
 
-        switch (CurrentState)
+        // Vérifier si le chemin doit être recalculé
+        if (Time.time - lastPathRecalculation > PathRecalculationInterval)
         {
-            case States.Regenerate:
-                HandleRegenerate();
-                break;
-
-            case States.GoToInfect:
-                GoToInfect();
-                break;
-
-            case States.GoToRetreat:
-                GoToRetreat();
-                break;
+            CheckForObstaclesAndRecalculate();
+            lastPathRecalculation = Time.time;
         }
 
+        switch (CurrentState)
+        {
+            case States.Contaminating:
+                Contaminating();
+                break;
+
+            case States.Fleeing:
+                Fleeing();
+                break;
+        }
     }
 
-
-    void HandleRegenerate()
+    void Contaminating()
     {
-        base.Regenerate();
-
-        // Vérifie si à côté d'une cellule infectée pour se régénérer
-        foreach (var cell in Spawner.InfectedCells)
+        // Vérifier si player est à proximité
+        Collider[] threats = Physics.OverlapSphere(transform.position, DetectionRadius);
+        foreach (Collider threat in threats)
         {
-            if (cell.CurrentState == ReproducerEntity.States.Infected)
+            PlayerController player = threat.GetComponent<PlayerController>();
+            
+            if (player != null)
             {
-                float distance = Vector3.Distance(transform.position, cell.transform.position);
-                if (distance <= RegenerateRadius)
-                {
-                    // Régénération accélérée près des cellules infectées
-                    CurrentHealth += RegenRateHealth * 2 * Time.deltaTime;
-                    break;
-                }
+                CurrentState = States.Fleeing;
+                return;
+            }
+        }
+        
+        // Vérifier si warden est à proximité (rayon plus petit)
+        Collider[] wardens = Physics.OverlapSphere(transform.position, WardenAvoidRadius);
+        foreach (Collider wardenCollider in wardens)
+        {
+            WardenEntity warden = wardenCollider.GetComponent<WardenEntity>();
+            
+            if (warden != null)
+            {
+                CurrentState = States.Fleeing;
+                return;
             }
         }
 
-        // Retour à l'infection si vie au max
-        if (CurrentHealth >= MaxHealth)
-        {
-            CurrentState = States.GoToInfect;
-        }
-    }
-
-    void GoToInfect()
-    {
-        ReproducerEntity targetCell = FindNearestSafeCell();
+        // Aller vers la cellule neutre ou healthy la plus proche
+        ReproducerEntity targetCell = FindNearestTargetCell();
         
         if (targetCell != null)
         {
@@ -90,104 +97,123 @@ public class MessengerEntity : Entity
         }
         else
         {
-            // Plus de cellules saines, se meurt
+            // Plus de cibles, se meurt
             TakeDamage(0.1f);
         }
     }
 
-    void GoToRetreat()
+    void Fleeing()
     {
-        ReproducerEntity targetCell = FindNearestInfectedCell();
+        // Trouver la direction opposée aux menaces
+        Vector3 fleeDirection = Vector3.zero;
         
-        if (targetCell != null)
+        // Éviter les joueurs
+        Collider[] threats = Physics.OverlapSphere(transform.position, DetectionRadius);
+        foreach (Collider threat in threats)
         {
-            Target = targetCell.transform.position;
+            PlayerController player = threat.GetComponent<PlayerController>();
+            
+            if (player != null)
+            {
+                fleeDirection += (transform.position - player.transform.position).normalized;
+            }
+        }
+        
+        // Éviter les wardens (rayon plus petit)
+        Collider[] wardens = Physics.OverlapSphere(transform.position, WardenAvoidRadius);
+        foreach (Collider wardenCollider in wardens)
+        {
+            WardenEntity warden = wardenCollider.GetComponent<WardenEntity>();
+            
+            if (warden != null)
+            {
+                fleeDirection += (transform.position - warden.transform.position).normalized;
+            }
+        }
+
+        if (fleeDirection.magnitude > 0.1f)
+        {
+            Vector3 fleePosition = transform.position + fleeDirection * 10f;
+            Agent.SetDestination(fleePosition);
+        }
+        else
+        {
+            // Plus de menaces, retour à la contamination
+            CurrentState = States.Contaminating;
+        }
+    }
+
+    ReproducerEntity FindNearestTargetCell()
+    {
+        ReproducerEntity nearest = null;
+        float minDist = float.MaxValue;
+
+        // Parcourir toutes les cellules connues
+        foreach (ReproducerEntity cell in allCells)
+        {
+            if (cell != null && (cell.CurrentState == ReproducerEntity.States.Healthy || cell.CurrentState == ReproducerEntity.States.Neutral))
+            {
+                // Vérifier combien de messagers visent déjà cette cellule
+                MessengerEntity[] allMessengers = FindObjectsByType<MessengerEntity>(FindObjectsSortMode.None);
+                int messengersTargetingThisCell = 0;
+                
+                foreach (MessengerEntity messenger in allMessengers)
+                {
+                    if (messenger != this && Vector3.Distance(messenger.Target, cell.transform.position) < 5f)
+                    {
+                        messengersTargetingThisCell++;
+                    }
+                }
+                
+                // Prioriser les cellules moins ciblées
+                float dist = Vector3.Distance(transform.position, cell.transform.position);
+                float priorityScore = dist + (messengersTargetingThisCell * 10f); // Pénalité de 10 unités par messager
+                
+                if (priorityScore < minDist)
+                {
+                    minDist = priorityScore;
+                    nearest = cell;
+                }
+            }
+        }
+        return nearest;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        ReproducerEntity reproducer = other.GetComponent<ReproducerEntity>();
+
+        // Infection des cellules neutres ou saines - la messagère meurt et contamine la cellule
+        if (reproducer != null && (reproducer.CurrentState == ReproducerEntity.States.Healthy || reproducer.CurrentState == ReproducerEntity.States.Neutral))
+        {
+            reproducer.CurrentState = ReproducerEntity.States.Infected;
+            TakeDamage(MaxHealth); // La messagère meurt
+            Debug.Log($"Messagère a contaminé une cellule et est morte");
+        }
+        
+        // Gestion des chasseuses
+        HunterEntity hunter = other.GetComponent<HunterEntity>();
+        if (hunter != null && CurrentHunters < MaxHunters)
+        {
+            hunter.SetMessengerHost(this);
+            CurrentHunters++;
+        }
+    }
+    
+    void CheckForObstaclesAndRecalculate()
+    {
+        if (Vector3.Distance(Target, lastTargetPosition) > 1f)
+        {
+            lastTargetPosition = Target;
             Agent.SetDestination(Target);
         }
     }
-
-    ReproducerEntity FindNearestSafeCell()
-    {
-        ReproducerEntity nearest = null;
-        float minDist = float.MaxValue;
-
-        foreach (var cell in Spawner.SafeCells)
-        {
-            if (cell.CurrentState == ReproducerEntity.States.Healthy)
-            {
-                float dist = Vector3.Distance(transform.position, cell.transform.position);
-                if (dist < minDist)
-                {
-                    minDist = dist;
-                    nearest = cell;
-                }
-            }
-        }
-        return nearest;
-    }
-
-    ReproducerEntity FindNearestInfectedCell()
-    {
-        ReproducerEntity nearest = null;
-        float minDist = float.MaxValue;
-
-        foreach (var cell in Spawner.InfectedCells)
-        {
-            if (cell.CurrentState == ReproducerEntity.States.Infected)
-            {
-                float dist = Vector3.Distance(transform.position, cell.transform.position);
-                if (dist < minDist)
-                {
-                    minDist = dist;
-                    nearest = cell;
-                }
-            }
-        }
-        return nearest;
-    }
-
-    public void AddHunter()
-    {
-        if (CurrentHunters < MaxHunterHost)
-        {
-            CurrentHunters++;
-            Debug.Log("Hunter ajouté: " + CurrentHunters + "/" + MaxHunterHost);
-        }
-    }
-
+    
     public void RemoveHunter()
     {
         if (CurrentHunters > 0)
         {
             CurrentHunters--;
-            Debug.Log("Hunter retiré: " + CurrentHunters + "/" + MaxHunterHost);
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        PlayerController player = other.GetComponent<PlayerController>();
-        WardenEntity warden = other.GetComponent<WardenEntity>();
-        ReproducerEntity reproducer = other.GetComponent<ReproducerEntity>();
-
-        // Interaction avec le joueur : dégâts mutuels
-        if (player != null)
-        {
-            player.ReceiveDamage(DrainDamage);
-            TakeDamage(DrainDamage);
-        }
-
-        // Interaction avec le warden : le messager perd de la vie
-        if (warden != null)
-        {
-            TakeDamage(DrainDamage);
-        }
-
-        // Interaction avec la cellule : infection
-        if (reproducer != null && reproducer.CurrentState == ReproducerEntity.States.Healthy)
-        {
-            reproducer.TakeDamage(DrainDamage);
-            TakeDamage(DrainDamage);
         }
     }
 }

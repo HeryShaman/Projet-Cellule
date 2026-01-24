@@ -3,54 +3,49 @@ using UnityEngine;
 public class ReproducerEntity : Entity
 {
     [Header("Spawner Stats")]
-    public float SpawnHealthCost;
-    public float SpawnInterval;
-    public int SpawnHunterLimit = 5;
-    public int SpawnMessengerLimit = 3;
-
-    [SerializeField] private float HealthySpawnCooldown = 5.0f;
-    [SerializeField] private float InfectedSpawnCooldown = 3.0f;
-    [SerializeField] private float SpawnTimer;
-
-    private int SpawnedHunters = 0;
-    private int SpawnedMessengers = 0;
-    private int CurrentHunters = 0;
-    private int CurrentMessengers = 0;
-
-    [Header("References")]
-    public GameObject HunterEntity;
-    public GameObject MessengerEntity;
-    public GameObject WardenEntity;
-
-    private GameManager Spawner;
-
-
+    public float SpawnHealthCost = 5.0f;
+    public float HealthySpawnCooldown = 5.0f;
+    public float InfectedSpawnCooldown = 3.0f;
+    public int MaxHunters = 3;
+    public int MaxWardens = 3;
+    
+    private int spawnedHunters = 0;
+    private int spawnedWardens = 0;
+    
     [Header("Entity Graphics")]
     public Material HealthyMaterial;
     public Material InfectedMaterial;
+    public Material NeutralMaterial;
+    
+    [Header("References")]
+    public GameObject HunterEntity;
+    public GameObject WardenEntity;
+
     private Renderer Render;
+    private float SpawnTimer;
 
     public enum States
     {
+        Neutral,
         Healthy,
         Infected
     }
 
-    [Header("Entity States")]
-    public States CurrentState = States.Healthy;
+    public States CurrentState = States.Neutral;
 
     void Start()
     {
         base.CurrentHealth = base.MaxHealth;
         Render = GetComponentInChildren<Renderer>();
         UpdateMaterial();
-        Spawner = FindAnyObjectByType<GameManager>();
     }
 
     private void OnTriggerStay(Collider other)
     {
         PlayerController player = other.GetComponent<PlayerController>();
+        MessengerEntity messenger = other.GetComponent<MessengerEntity>();
 
+        // Interaction avec le joueur : si la cellule est contaminée, le joueur peut la soigner
         if (player != null)
         {
             if (CurrentState == States.Infected)
@@ -58,6 +53,21 @@ public class ReproducerEntity : Entity
                 float DrainDamage = player.CurrentStamina;
                 TakeDamage(DrainDamage * Time.deltaTime);
             }
+            else if (CurrentState == States.Neutral)
+            {
+                // Le joueur peut rendre la cellule saine
+                CurrentState = States.Healthy;
+                UpdateMaterial();
+                Debug.Log("Cellule rendue saine par le joueur");
+            }
+        }
+
+        // Interaction avec le messager : contamination
+        if (messenger != null && (CurrentState == States.Neutral || CurrentState == States.Healthy))
+        {
+            CurrentState = States.Infected;
+            UpdateMaterial();
+            Debug.Log("Cellule contaminée par un messager");
         }
     }
 
@@ -68,15 +78,14 @@ public class ReproducerEntity : Entity
 
         SpawnTimer += Time.deltaTime;
 
-        // Mettre à jour les compteurs actuels depuis le GameManager
-        if (Spawner != null)
+        // Logique d'Apparition Neutre (ne spawn rien)
+        if (CurrentState == States.Neutral)
         {
-            CurrentHunters = Spawner.ActiveHunters.Count;
-            CurrentMessengers = Spawner.ActiveMessengers.Count;
+            // Les cellules neutres ne spawn rien
         }
 
         // Logique d'Apparition Saine
-        if (CurrentState == States.Healthy)
+        else if (CurrentState == States.Healthy)
         {
             HealthySpawnLogic();
         }
@@ -97,11 +106,17 @@ public class ReproducerEntity : Entity
 
         switch (CurrentState)
         {
+            case States.Neutral:
+                if (NeutralMaterial != null)
+                    Render.material = NeutralMaterial;
+                break;
             case States.Healthy:
-                Render.material = HealthyMaterial;
+                if (HealthyMaterial != null)
+                    Render.material = HealthyMaterial;
                 break;
             case States.Infected:
-                Render.material = InfectedMaterial;
+                if (InfectedMaterial != null)
+                    Render.material = InfectedMaterial;
                 break;
         }
     }
@@ -114,34 +129,18 @@ public class ReproducerEntity : Entity
         if (CurrentHealth < SpawnHealthCost)
             return;
 
+        // Vérifier le nombre d'entités locales
+        if (spawnedHunters >= MaxHunters)
+            return;
+
         CurrentHealth -= SpawnHealthCost;
 
-        GameObject entityToSpawn;
-        int limit;
-
-        switch (Random.Range(0, 2))
+        // Spawn uniquement des Hunters
+        if (HunterEntity != null)
         {
-            case 0:
-                entityToSpawn = HunterEntity;
-                limit = SpawnHunterLimit;
-                break;
-            case 1:
-                entityToSpawn = MessengerEntity;
-                limit = SpawnMessengerLimit;
-                break;
-            default:
-                return;
-        }
-
-        if ((entityToSpawn == HunterEntity && CurrentHunters < limit) ||
-            (entityToSpawn == MessengerEntity && CurrentMessengers < limit))
-        {
-            Instantiate(entityToSpawn, transform.position + new Vector3(Random.Range(-3f, 3f), 0, Random.Range(-3f, 3f)), Quaternion.identity);
-
-            if (entityToSpawn == HunterEntity)
-                SpawnedHunters++;
-            else
-                SpawnedMessengers++;
+            Instantiate(HunterEntity, transform.position + new Vector3(Random.Range(-3f, 3f), 0, Random.Range(-3f, 3f)), Quaternion.identity);
+            spawnedHunters++;
+            Debug.Log("Spawn Hunter depuis cellule infectée");
         }
 
         SpawnTimer = 0f;
@@ -155,15 +154,18 @@ public class ReproducerEntity : Entity
         if (CurrentHealth < SpawnHealthCost)
             return;
 
-        if (Spawner.OccupiedWardenNodes.Count >= Spawner.WardenNodes.Count)
-            return;
-
-        if(Spawner.MaxWarden <= Spawner.ActiveWardens.Count)
+        // Vérifier le nombre d'entités locales
+        if (spawnedWardens >= MaxWardens)
             return;
 
         CurrentHealth -= SpawnHealthCost;
 
-        Instantiate(WardenEntity, transform.position + new Vector3(Random.Range(-3f, 3f), 0, Random.Range(-3f, 3f)), Quaternion.identity);
+        if (WardenEntity != null)
+        {
+            Instantiate(WardenEntity, transform.position + new Vector3(Random.Range(-3f, 3f), 0, Random.Range(-3f, 3f)), Quaternion.identity);
+            spawnedWardens++;
+            Debug.Log("Spawn Warden depuis cellule saine");
+        }
 
         SpawnTimer = 0f;
     }
@@ -175,17 +177,39 @@ public class ReproducerEntity : Entity
         if (CurrentHealth <= 0)
         {
             if (CurrentState == States.Infected)
+            {
                 CurrentState = States.Healthy;
+                // Réinitialiser les compteurs quand on passe de infecté à sain
+                spawnedHunters = 0;
+                spawnedWardens = 0;
+            }
             else if (CurrentState == States.Healthy)
+            {
                 CurrentState = States.Infected;
+                // Réinitialiser les compteurs quand on passe de sain à infecté
+                spawnedHunters = 0;
+                spawnedWardens = 0;
+            }
+            // Les cellules neutres ne changent pas d'état quand elles meurent
         }
     }
 
     protected override void Die()
     {
         if (CurrentState == States.Infected)
+        {
             CurrentState = States.Healthy;
+            // Réinitialiser les compteurs quand on passe de infecté à sain
+            spawnedHunters = 0;
+            spawnedWardens = 0;
+        }
         else if (CurrentState == States.Healthy)
+        {
             CurrentState = States.Infected;
+            // Réinitialiser les compteurs quand on passe de sain à infecté
+            spawnedHunters = 0;
+            spawnedWardens = 0;
+        }
+        // Les cellules neutres ne changent pas d'état quand elles meurent
     }
 }

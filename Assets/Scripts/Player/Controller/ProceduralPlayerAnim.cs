@@ -8,14 +8,17 @@ public class ProceduralPlayerAnim : MonoBehaviour
     public float MaxOffset = 0.5f;
     public float MoveSpeed = 1f;
     public float ReturnSpeed = 0.5f;
+    public float RotationSpeed = 10f;
 
     private Vector3 InitialPos;
+    private Quaternion InitialRotation;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (PlayerModel == null) PlayerModel = transform;
         InitialPos = PlayerModel.localPosition;
+        InitialRotation = PlayerModel.localRotation;
     }
 
     public void MoveAnim(Vector2 Direction)
@@ -35,7 +38,25 @@ public class ProceduralPlayerAnim : MonoBehaviour
         {
             // Se déplace dans la direction maintenu
             PlayerModel.localPosition = Vector3.Lerp(PlayerModel.localPosition, TargetLocal, Time.deltaTime * MoveSpeed);
+            
+            // Orienter le modèle dans la direction du mouvement
+            Vector3 worldDirection = new Vector3(Dir.x, 0f, Dir.y);
+            if (worldDirection.magnitude > 0.1f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(worldDirection);
+                PlayerModel.rotation = Quaternion.Lerp(PlayerModel.rotation, targetRotation, Time.deltaTime * RotationSpeed);
+            }
         }        
+    }
+
+    public void DashAnim(Vector3 DashDirection)
+    {
+        // Orienter le modèle dans la direction du dash
+        if (DashDirection.magnitude > 0.1f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(DashDirection);
+            PlayerModel.rotation = Quaternion.Lerp(PlayerModel.rotation, targetRotation, Time.deltaTime * RotationSpeed * 2f);
+        }
     }
 
     void ShakeAnim()
