@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     public List<Vector3> CellSpawns;
     public List<Vector3> WardenNodes;
 
-    public HashSet<ReproducerEntity> InfectedCells = new HashSet<ReproducerEntity>();
-    public HashSet<ReproducerEntity> SafeCells = new HashSet<ReproducerEntity>();
+    public HashSet<CellEntity> InfectedCells = new HashSet<CellEntity>();
+    public HashSet<CellEntity> SafeCells = new HashSet<CellEntity>();
     public HashSet<Vector3> OccupiedWardenNodes = new HashSet<Vector3>();
 
     // Listes des entités vivantes
@@ -36,42 +36,32 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (AutoSpawnPlayer && Object.FindAnyObjectByType<PlayerController>() == null)
-        {
-            SpawnPlayer();
-        }
         SpawnCells();
-
-        // Démarre la première infection après 4 secondes
-        InvokeRepeating(nameof(InfectCells), TimeBeforeInfect, TimeBeforeInfect);
     }
 
     private void Update()
     {
         // Vérifie en temps réel l'état des cellules et met à jour les listes
         UpdateCellLists();
-        
-        // Gère le timer d'infection
-        InfectionTimer += Time.deltaTime;
     }
 
     private void UpdateCellLists()
     {
         // Parcourt toutes les cellules pour vérifier leur état
-        ReproducerEntity[] allCells = FindObjectsByType<ReproducerEntity>(FindObjectsSortMode.None);
+        CellEntity[] allCells = FindObjectsByType<CellEntity>(FindObjectsSortMode.None);
 
         // Vide les listes actuelles
         SafeCells.Clear();
         InfectedCells.Clear();
 
         // Reclassifie les cellules selon leur état actuel
-        foreach (ReproducerEntity cell in allCells)
+        foreach (CellEntity cell in allCells)
         {
-            if (cell.CurrentState == ReproducerEntity.States.Healthy)
+            if (cell.CurrentState == CellEntity.States.Healthy)
             {
                 SafeCells.Add(cell);
             }
-            else if (cell.CurrentState == ReproducerEntity.States.Infected)
+            else if (cell.CurrentState == CellEntity.States.Infected)
             {
                 InfectedCells.Add(cell);
             }
@@ -93,7 +83,7 @@ public class GameManager : MonoBehaviour
                 Vector3 spawnPos = point;
 
                 // Instanciation de la cellule
-                ReproducerEntity cell = Instantiate(CellPrefab, spawnPos, Quaternion.identity).GetComponent<ReproducerEntity>();
+                CellEntity cell = Instantiate(CellPrefab, spawnPos, Quaternion.identity).GetComponent<CellEntity>();
                 SafeCells.Add(cell);
             }
         }
@@ -105,83 +95,19 @@ public class GameManager : MonoBehaviour
         if (InfectedCells.Count == 0 && SafeCells.Count > 0)
         {
             // Prend une cellule saine au hasard
-            ReproducerEntity[] safeCellsArray = new ReproducerEntity[SafeCells.Count];
+            CellEntity[] safeCellsArray = new CellEntity[SafeCells.Count];
             SafeCells.CopyTo(safeCellsArray);
 
             int randomIndex = Random.Range(0, safeCellsArray.Length);
-            ReproducerEntity cellToInfect = safeCellsArray[randomIndex];
+            CellEntity cellToInfect = safeCellsArray[randomIndex];
 
             if (cellToInfect != null)
             {
-                cellToInfect.CurrentState = ReproducerEntity.States.Infected;
+                cellToInfect.CurrentState = CellEntity.States.Infected;
                 Debug.Log($"Infection de la cellule à {cellToInfect.transform.position}");
             }
         }
     }
-
-    public GameObject SpawnPlayer()
-    {
-        if (PlayerPrefab == null)
-        {
-            Debug.LogWarning("SpawnManager : PlayerPrefab non assigné !");
-            return null;
-        }
-
-        // Instancie le joueur
-        GameObject player = Instantiate(PlayerPrefab, PlayerSpawn, Quaternion.identity);
-        player.name = "Player";
-
-        // Assigner l'InputReader directement depuis le prefab
-        InputReader inputReader = Object.FindAnyObjectByType<InputReader>();
-        if (inputReader != null)
-        {
-            PlayerController pc = player.GetComponent<PlayerController>();
-            if (pc != null)
-            {
-                pc.input = inputReader;
-                Debug.Log("InputReader assigné au PlayerController");
-            }
-        }
-        else
-        {
-            Debug.LogError("Aucun InputReader trouvé dans la scène !");
-        }
-        
-        Debug.Log("Joueur spawn");
-        return player;
-    }
-    
-    // Méthode publique pour faire apparaître le joueur manuellement
-    [ContextMenu("Faire apparaître le joueur")]
-    public void SpawnPlayerManually()
-    {
-        if (Object.FindAnyObjectByType<PlayerController>() == null)
-        {
-            SpawnPlayer();
-            Debug.Log("Joueur spawn manuellement via le GameManager");
-        }
-        else
-        {
-            Debug.LogWarning("Un joueur existe déjà dans la scène !");
-        }
-    }
-    
-    // Méthode pour supprimer le joueur actuel
-    [ContextMenu("Supprimer le joueur")]
-    public void RemovePlayer()
-    {
-        PlayerController player = Object.FindAnyObjectByType<PlayerController>();
-        if (player != null)
-        {
-            DestroyImmediate(player.gameObject);
-            Debug.Log("Joueur supprimé manuellement via le GameManager");
-        }
-        else
-        {
-            Debug.LogWarning("Aucun joueur à supprimer !");
-        }
-    }
-
     private void OnDrawGizmos()
     {
         // Spawn du joueur

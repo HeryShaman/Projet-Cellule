@@ -28,7 +28,8 @@ public class CameraController : MonoBehaviour
 
         if (playerTarget != null)
         {
-            currentTarget = playerTarget;
+            Transform coreTransform = playerTarget.Find("CytoPlasm/Core");
+            currentTarget = coreTransform != null ? coreTransform : playerTarget;
             isPlayerTarget = true;
         }
         else if (motherShipTarget != null)
@@ -57,13 +58,17 @@ public class CameraController : MonoBehaviour
         CameraBehaviour.CamPositionOffset(cam, playerTarget, PosOffsets[1]);
         CameraBehaviour.LookTarget(cam, playerTarget);
 
-        CellController cellController = playerTarget.GetComponent<CellController>();
+        CellController cellController = playerTarget.parent.parent.GetComponent<CellController>();
         if (cellController != null)
         {
+            if (cellController.ActiveShake)
+            {
+                StartCoroutine(CameraBehaviour.CameraShake(cam, 0.1f, 0.1f));
+            }
+
             if (cellController.IsDashing)
             {
                 CameraBehaviour.CamFOV(cam, BaseFov + DashFov, CamSpeed);
-                StartCoroutine(CameraBehaviour.CameraShake(cam, 0.2f, 0.1f));
             }
             else
             {
@@ -72,11 +77,7 @@ public class CameraController : MonoBehaviour
 
             if (cellController.BounceLock)
             {
-                StartCoroutine(CameraBehaviour.HitPause(0.05f));
-            }
-            else
-            {
-                return;
+                StartCoroutine(CameraBehaviour.CameraShake(cam, 0.2f, 0.1f));
             }
         }
     }

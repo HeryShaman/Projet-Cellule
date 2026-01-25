@@ -3,80 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\Entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Enemies\\Ennemies 2.0\\Entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\player\\camera\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\camera\\cameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\player\\camera\\camerabehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\camera\\camerabehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|c:\\users\\heryr\\documents\\fichiers unity\\projet-cellule\\assets\\scripts\\player\\controller\\animcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\controller\\animcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|c:\\users\\heryr\\documents\\fichiers unity\\projet-cellule\\assets\\scripts\\player\\controller\\cellcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\controller\\cellcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\enemies\\ennemies 2.0\\playermothership.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\ennemies 2.0\\playermothership.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|c:\\users\\heryr\\documents\\fichiers unity\\projet-cellule\\assets\\scripts\\player\\controller\\proceduralplayeranim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\controller\\proceduralplayeranim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\enemies\\ennemies 2.0\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\ennemies 2.0\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\player\\controller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\controller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\player\\input\\inputreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\input\\inputreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\enemies\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\player\\camera\\camerabehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\camera\\camerabehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\player\\controller\\cellcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\controller\\cellcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\enemies\\ennemies 2.0\\wardenentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\ennemies 2.0\\wardenentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\player\\controller\\animcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\controller\\animcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\enemies\\ennemies 2.0\\mothershipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\ennemies 2.0\\mothershipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\WardenEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Enemies\\Ennemies 2.0\\WardenEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\enemies\\ennemies 2.0\\messengerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\ennemies 2.0\\messengerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\HunterEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Enemies\\Ennemies 2.0\\HunterEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\background\\voronoitexture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\background\\voronoitexture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\MessengerEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Enemies\\Ennemies 2.0\\MessengerEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\enemies\\ennemies 2.0\\hunterentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\ennemies 2.0\\hunterentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\PlayerMotherShip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Enemies\\Ennemies 2.0\\PlayerMotherShip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\enemies\\ennemies 2.0\\reproducerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\ennemies 2.0\\reproducerentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\enemies\\chasseuse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\chasseuse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\enemies\\supportcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\supportcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\MotherShipController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Enemies\\Ennemies 2.0\\MotherShipController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -86,24 +58,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 18,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ReproducerEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\ReproducerEntity.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\ReproducerEntity.cs",
-              "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\ReproducerEntity.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\ReproducerEntity.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAhwGcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T13:55:35.394Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 7,
               "Title": "WardenEntity.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\WardenEntity.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\WardenEntity.cs",
@@ -116,20 +75,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 8,
               "Title": "HunterEntity.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\HunterEntity.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\HunterEntity.cs",
               "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\HunterEntity.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\HunterEntity.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAwwHkAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAwwHkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-26T12:12:08.906Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 9,
               "Title": "MessengerEntity.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\MessengerEntity.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\MessengerEntity.cs",
@@ -142,73 +101,57 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Entity.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\Entity.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\Entity.cs",
               "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\Entity.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\Entity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-12T13:53:56.579Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Managers\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\GameManager.cs",
               "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Managers\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Managers\\GameManager.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAuwAsAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAkwCwAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-31T09:58:02.756Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ProceduralPlayerAnim.cs",
-              "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Controller\\ProceduralPlayerAnim.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Controller\\ProceduralPlayerAnim.cs",
-              "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Controller\\ProceduralPlayerAnim.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\Controller\\ProceduralPlayerAnim.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAYwAoAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T13:24:21.567Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "AnimController.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Controller\\AnimController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Controller\\AnimController.cs",
               "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Controller\\AnimController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\Controller\\AnimController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T13:23:05.414Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T13:23:05.414Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "CellController.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Controller\\CellController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Controller\\CellController.cs",
               "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Controller\\CellController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\Controller\\CellController.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAIAwwFQAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAqwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-22T18:32:16.135Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-22T18:32:16.135Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "PlayerMotherShip.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\PlayerMotherShip.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\PlayerMotherShip.cs",
@@ -216,12 +159,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\PlayerMotherShip.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAApwDAAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-22T20:37:25.515Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-22T20:37:25.515Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "CameraBehaviour.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Camera\\CameraBehaviour.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Camera\\CameraBehaviour.cs",
@@ -229,106 +171,43 @@
               "RelativeToolTip": "Assets\\Scripts\\Player\\Camera\\CameraBehaviour.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAAwDMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T15:11:08.862Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-16T15:11:08.862Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "MotherShipController.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\MotherShipController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\MotherShipController.cs",
               "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\MotherShipController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\MotherShipController.cs",
-              "ViewState": "AgIAALYAAAAAAAAAAAAqwMMAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAKoAAAAAAAAAAAAAAKoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-16T06:31:38.947Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 3,
               "Title": "InputReader.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Input\\InputReader.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Input\\InputReader.cs",
               "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Input\\InputReader.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\Input\\InputReader.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwBUAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-13T11:46:13.456Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "VoronoiTexture.cs",
-              "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Background\\VoronoiTexture.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Background\\VoronoiTexture.cs",
-              "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Background\\VoronoiTexture.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Background\\VoronoiTexture.cs",
-              "ViewState": "AgIAAKYAAAAAAAAAAAAAwLsAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-10T09:13:40.469Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Enemy.cs",
-              "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Enemy.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Enemy.cs",
-              "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Enemy.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Enemy.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAYwDIAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T06:30:27.267Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "SupportCell.cs",
-              "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\SupportCell.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\SupportCell.cs",
-              "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\SupportCell.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\SupportCell.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwIIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T06:21:31.742Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PlayerController.cs",
-              "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Controller\\PlayerController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Controller\\PlayerController.cs",
-              "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Controller\\PlayerController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player\\Controller\\PlayerController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAowLgAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T13:44:04.165Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Chasseuse.cs",
-              "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Chasseuse.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Chasseuse.cs",
-              "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Chasseuse.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Chasseuse.cs",
-              "ViewState": "AgIAAJgAAAAAAAAAAAAlwD4AAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T14:01:29.139Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "CameraController.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Camera\\CameraController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Camera\\CameraController.cs",
               "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Camera\\CameraController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\Camera\\CameraController.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAYwDkAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAkwEEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T16:32:53.509Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-12T16:32:53.509Z"
             }
           ]
         }

@@ -100,20 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116752ae67ada0a4a924b74a3ff81ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 0
-  MaxHealth: 20
-  RegenRateHealth: 20
-  EnemyModel: {fileID: 5294065842559758214}
-  MinScale: {x: 3, y: 3, z: 3}
-  MaxScale: {x: 3, y: 3, z: 3}
-  PointA: {fileID: 0}
-  PointB: {fileID: 0}
+  PointA: {x: 0, y: 0, z: 0}
+  PointB: {x: 0, y: 0, z: 0}
   MoveSpeed: 3
-  WaitTimeAtPoints: 2
   MessengerPrefab: {fileID: 6701230996886309562, guid: f90e82520420cb649962e50e261ffa5e, type: 3}
   MessengerSpawnInterval: 5
-  MaxMessengers: 5
+  MessengersPerWave: 3
   MessengerSpawnRadius: 3
+  MaxMessengers: 6
   GameStateCheckInterval: 2
   CurrentGameState: 1
 --- !u!195 &5083493427163692149

@@ -13,6 +13,9 @@ public class AnimController : MonoBehaviour
 
     [SerializeField] private TrailRenderer DashTrail;
     [SerializeField] private CellController Anim;
+    [SerializeField] private GameObject RippleParticlePrefab;
+
+    private float lastRippleTime;
 
 
 
@@ -23,8 +26,11 @@ public class AnimController : MonoBehaviour
 
     void Update()
     {
-        ModelScale();
         CoreDirection();
+        ModelScale();
+        ActiveDashTrail();
+        UpdateMaterials();
+        RippleParticles();
     }
 
     // Défini la direction et le mouvement du noyau
@@ -35,7 +41,7 @@ public class AnimController : MonoBehaviour
         Vector3 velocity = Anim.Velocity;
         Vector3 coreDir = new Vector3(velocity.x, 0f, velocity.z);
         
-        if (coreDir.magnitude > 0.25f)
+        if (coreDir.magnitude > 0.1f)
             SphericalCore.localPosition = Vector3.Lerp(SphericalCore.localPosition, coreDir.normalized * 0.1f, Time.deltaTime * 5f);
         else
             SphericalCore.localPosition = Vector3.Lerp(SphericalCore.localPosition, Vector3.zero, Time.deltaTime * 5f);
@@ -54,15 +60,46 @@ public class AnimController : MonoBehaviour
 
         if (Anim == null) return;
 
+        if (SphericalCore == null) return;
+
         if (Anim.IsDashing)
         {
-            CoreMaterials[0].SetFloat("_EmissionGain", 1f);
-            CytoplasmMaterials[0].SetFloat("_EmissionGain", 1f);
+            // Dash material
+            SphericalCore.GetComponent<Renderer>().material = CoreMaterials[1];
+            Cytoplasm.GetComponent<Renderer>().material = CytoplasmMaterials[1];
         }
         else
         {
-            CoreMaterials[0].SetFloat("_EmissionGain", 0f);
-            CytoplasmMaterials[0].SetFloat("_EmissionGain", 0f);
+            // Normal material
+            SphericalCore.GetComponent<Renderer>().material = CoreMaterials[0];
+            Cytoplasm.GetComponent<Renderer>().material = CytoplasmMaterials[0];
+        }
+    }
+
+    void RippleParticles()
+    {
+        if (RippleParticlePrefab == null || Anim == null) return;
+        
+        if (Anim.Velocity.magnitude > 0.5f && Time.time - lastRippleTime > 0.1f)
+        {
+            Vector3 ripplePosition = transform.position + Vector3.down * 0.5f;
+            GameObject ripple = Instantiate(RippleParticlePrefab, ripplePosition, Quaternion.identity);
+            Destroy(ripple, 2f);
+            lastRippleTime = Time.time;
+        }
+    }
+
+    void ActiveDashTrail()
+    {
+        if (DashTrail == null) return;
+        
+        if (Anim.IsDashing)
+        {
+            DashTrail.emitting = true;
+        }
+        else
+        {
+            DashTrail.emitting = false;
         }
     }
 

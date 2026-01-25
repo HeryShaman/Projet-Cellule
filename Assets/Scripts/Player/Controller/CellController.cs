@@ -14,6 +14,9 @@ public class CellController : MonoBehaviour
     public float DashTime = 0.2f;
     public float DashCooldown = 0.2f;
     [SerializeField] public bool IsDashing;
+    public bool IsDashOnCooldown = false;
+    public bool ActiveShake;
+    public float ShakeTimer = 0;
 
     [Header("Health")]
     public float MaxHealth = 10f;
@@ -37,6 +40,7 @@ public class CellController : MonoBehaviour
     [Header("Références")]
     [SerializeField] private CharacterController cc;
     [SerializeField] private InputReader input;
+
 
     void Start()
     {
@@ -62,6 +66,27 @@ public class CellController : MonoBehaviour
 
         RegenerateHealth();
         
+        // SHAKE TIMER
+        if (IsDashing && ShakeTimer > 0)
+        {
+            ActiveShake = true;
+            ShakeTimer -= Time.deltaTime;
+        }
+        else
+        {
+            ActiveShake = false;
+            if (!IsDashing)
+            {
+                ShakeTimer = 0.1f;
+            }
+        }
+        
+        // Reset BounceLock when not dashing
+        if (!IsDashing)
+        {
+            BounceLock = false;
+        }
+        
         // DASH MOVEMENT
         if (IsDashing)
         {
@@ -74,7 +99,7 @@ public class CellController : MonoBehaviour
             cc.Move(Velocity * Time.deltaTime);
 
             // Start dash if input held and conditions met
-            if (input != null && input.DashHeld && Time.time - LastDamageTimer >= DamageRegenDelay)
+            if (input != null && input.DashHeld && !IsDashOnCooldown)
                 currentDashCoroutine = StartCoroutine(DashRoutine());
         }
     }
@@ -82,16 +107,12 @@ public class CellController : MonoBehaviour
     private IEnumerator DashRoutine()
     {
         IsDashing = true;
+        IsDashOnCooldown = true;
         BounceLock = false;
 
         DashVelocity = Wishvel.magnitude > 0.1f
             ? new Vector3(Wishvel.x, 0, Wishvel.y).normalized
             : transform.forward;
-
-        // Small slow-motion effect
-        Time.timeScale = 0.75f;
-        yield return new WaitForSecondsRealtime(0.05f);
-        Time.timeScale = 1f;
 
         float timer = 0f;
 
@@ -100,8 +121,8 @@ public class CellController : MonoBehaviour
         {
             // Dash direction
             Vector3 DashDir = new Vector3(Wishvel.x, 0, Wishvel.y).normalized;
+            
             // Dash Movement
-
             if (Wishvel.magnitude > 0.1f)
             {
                 DashVelocity = Vector3.Lerp(DashVelocity, DashDir, 0.12f); // 0.12f
@@ -113,8 +134,58 @@ public class CellController : MonoBehaviour
             yield return null;
         }
         Velocity *= Friction;
-        yield return new WaitForSeconds(DashCooldown);
         IsDashing = false;
+        yield return new WaitForSeconds(DashCooldown);
+        IsDashOnCooldown = false;
+    }
+
+    private IEnumerator DashCooldownRoutine()
+    {
+        yield return new WaitForSeconds(DashCooldown);
+        IsDashOnCooldown = false;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        Entity entity = other.GetComponent<Entity>();
+        if (entity is MessengerEntity)
+        {
+            Vector3 push = (entity.transform.position - transform.position).normalized;
+            push.y = 0f;
+            entity.transform.position += push * 0.12f;
+        }
+
+        // Messenger Entity
+        if (entity != null && IsDashing)
+        {
+            if (entity is MessengerEntity)
+            {
+                entity.TakeDamage(99f);
+
+                if (currentDashCoroutine != null)
+                    StopCoroutine(currentDashCoroutine);
+
+                IsDashing = false;
+                StartCoroutine(DashCooldownRoutine());
+
+                StartCoroutine(CameraBehaviour.HitPause(0.1f));
+            }
+        }
+
+        // Cell Entity
+        if (entity != null && IsDashing)
+        {
+            if (entity is CellEntity cellEntity && cellEntity.CurrentState != CellEntity.States.Healthy)
+            {
+                if (currentDashCoroutine != null)
+                    StopCoroutine(currentDashCoroutine);
+
+                IsDashing = false;
+                StartCoroutine(DashCooldownRoutine());
+
+                StartCoroutine(CameraBehaviour.HitPause(0.1f));
+            }
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

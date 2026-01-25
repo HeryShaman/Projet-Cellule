@@ -124,12 +124,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
-  MaxHealth: 3
+  MaxHealth: 4
   RegenRateHealth: 1
   EnemyModel: {fileID: 5848472064600780822}
   MinScale: {x: 1, y: 1, z: 1}
   MaxScale: {x: 4, y: 1, z: 4}
   MaxSpeed: 5
+  DrainDamage: 0.1
   MaxDistanceFromCell: 15
   GuardRadius: 8
   ChaseSpeedMultiplier: 2

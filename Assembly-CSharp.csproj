@@ -62,28 +62,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\Camera\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Ennemies 2.0\ReproducerEntity.cs" />
-    <Compile Include="Assets\Scripts\camera\cameraShake.cs" />
-    <Compile Include="Assets\Scripts\Managers\SFXManager.cs" />
-    <Compile Include="Assets\Scripts\Player\Controller\ProceduralPlayerAnim.cs" />
+    <Compile Include="Assets\Scripts\Enemies\HunterEntity.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Entity.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Player\Input\Game Input.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Ennemies 2.0\HunterEntity.cs" />
+    <Compile Include="Assets\Scripts\Enemies\MotherShipController.cs" />
+    <Compile Include="Assets\Scripts\Enemies\PlayerMotherShip.cs" />
     <Compile Include="Assets\Scripts\Player\Camera\CameraBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Ennemies 2.0\WardenEntity.cs" />
     <Compile Include="Assets\Scripts\Player\Controller\CellController.cs" />
-    <Compile Include="Assets\Scripts\Enemies\SupportCell.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Ennemies 2.0\MotherShipController.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Enemies\MessengerEntity.cs" />
     <Compile Include="Assets\Scripts\Player\Input\InputReader.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Chasseuse.cs" />
-    <Compile Include="Assets\Scripts\Player\Controller\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Transporteur.cs" />
+    <Compile Include="Assets\Scripts\Enemies\WardenEntity.cs" />
+    <Compile Include="Assets\Scripts\Enemies\CellEntity.cs" />
     <Compile Include="Assets\Scripts\Player\Controller\AnimController.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Ennemies 2.0\PlayerMotherShip.cs" />
-    <Compile Include="Assets\Scripts\Background\VoronoiTexture.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Ennemies 2.0\Entity.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Ennemies 2.0\MessengerEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -151,11 +151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
-  MaxHealth: 4
+  MaxHealth: 5
   RegenRateHealth: 0
   EnemyModel: {fileID: 1738273936625937631}
   MinScale: {x: 0.5, y: 0.5, z: 0.5}
-  MaxScale: {x: 1.5, y: 1, z: 1.5}
+  MaxScale: {x: 2.5, y: 2.5, z: 2.5}
   DrainDamage: 0.1
   SearchRadius: 6
   PatrolRadius: 8
