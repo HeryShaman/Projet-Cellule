@@ -110,6 +110,7 @@ MonoBehaviour:
   CoreMaterials:
   - {fileID: 2100000, guid: 715e24d52defd644a83bdd1327afd358, type: 2}
   - {fileID: 2100000, guid: 6d3f116442d5c984ca062e33a7b1ad3d, type: 2}
+  - {fileID: 2100000, guid: b49a79451e6d6be4698b9322ad12b311, type: 2}
   CytoplasmMaterials:
   - {fileID: 2100000, guid: 5e634d4f11d14914694d37d0b02556e7, type: 2}
   - {fileID: 2100000, guid: 5ba0667f5362df44c958b4a34ec30f67, type: 2}

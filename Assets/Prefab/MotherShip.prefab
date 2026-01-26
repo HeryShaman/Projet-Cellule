@@ -126,3 +126,4 @@ MonoBehaviour:
   MoveSpeed: 3
   PlayerPrefab: {fileID: 0}
   RespawnDelay: 3
+  RippleParticlePrefab: {fileID: 5497315430024008942, guid: e5ebe08b17d5c1a4b9c13420342da32e, type: 3}

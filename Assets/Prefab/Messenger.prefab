@@ -134,6 +134,7 @@ MonoBehaviour:
   WardenAvoidRadius: 1
   PathRecalculationInterval: 0.5
   MaxHunters: 3
+  RippleParticlePrefab: {fileID: 5497315430024008942, guid: e5ebe08b17d5c1a4b9c13420342da32e, type: 3}
   CurrentHunters: 0
   CurrentState: 0
 --- !u!54 &775862287617768513

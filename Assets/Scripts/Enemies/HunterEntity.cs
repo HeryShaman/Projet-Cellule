@@ -9,11 +9,15 @@ public class HunterEntity : Entity
     public float SearchRadius = 6f;
     public float PatrolRadius = 8f;
 
+    [Header("Références")]
+    [SerializeField] private GameObject RippleParticlePrefab;
+
     private Transform Target;
     private NavMeshAgent Agent;
     private GameManager Spawner;
     private CellEntity OriginInfectedCell;
     private MessengerEntity MessengerHost;
+    private float lastRippleTime;
 
     public enum States
     {
@@ -63,6 +67,8 @@ public class HunterEntity : Entity
                 AttackEntity();
                 break;
         }
+        
+        RippleParticles();
     }
 
     void SearchInfectedCell()
@@ -215,6 +221,19 @@ public class HunterEntity : Entity
         if (MessengerHost != null)
         {
             MessengerHost.RemoveHunter();
+        }
+    }
+    
+    void RippleParticles()
+    {
+        if (RippleParticlePrefab == null || Agent == null) return;
+        
+        if (Agent.velocity.magnitude > 0.5f && Time.time - lastRippleTime > 0.1f)
+        {
+            Vector3 ripplePosition = transform.position + Vector3.down * 0.5f;
+            GameObject ripple = Instantiate(RippleParticlePrefab, ripplePosition, Quaternion.identity);
+            Destroy(ripple, 2f);
+            lastRippleTime = Time.time;
         }
     }
 }

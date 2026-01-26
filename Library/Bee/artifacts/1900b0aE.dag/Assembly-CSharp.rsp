@@ -124,6 +124,7 @@
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
 -define:ENABLE_INPUT_SYSTEM
+-define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:TEXTCORE_TEXT_ENGINE_1_5_OR_NEWER
 -define:UNITY_POST_PROCESSING_STACK_V2
@@ -374,6 +375,11 @@
 -r:"Library/PackageCache/com.unity.nuget.mono-cecil@d6f9955a5d5f/Mono.Cecil.dll"
 -r:"Library/PackageCache/com.unity.testtools.codecoverage@205a02cbcb39/lib/ReportGenerator/ReportGeneratorMerged.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@191c0d7e3b69/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/FMODUnity.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/FMODUnityEditor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/FMODUnityHaptics.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/FMODUnityResonance.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/FMODUnityResonanceEditor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.ConversionSystem.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.ref.dll"
@@ -435,12 +441,48 @@
 "Assets/Scripts/Enemies/PlayerMotherShip.cs"
 "Assets/Scripts/Enemies/WardenEntity.cs"
 "Assets/Scripts/Managers/GameManager.cs"
+"Assets/Scripts/Managers/MainMenu.cs"
+"Assets/Scripts/Managers/PauseMenu.cs"
 "Assets/Scripts/Player/Camera/CameraBehaviour.cs"
 "Assets/Scripts/Player/Camera/CameraController.cs"
 "Assets/Scripts/Player/Controller/AnimController.cs"
 "Assets/Scripts/Player/Controller/CellController.cs"
 "Assets/Scripts/Player/Input/Game Input.cs"
 "Assets/Scripts/Player/Input/InputReader.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/Benchmark03.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/Benchmark04.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/CameraController.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/ChatController.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/DropdownSample.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/EnvMapAnimator.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/ObjectSpin.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/ShaderPropAnimator.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/SimpleScript.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/SkewTextExample.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TeleType.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TextConsoleSimulator.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TextMeshProFloatingText.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TextMeshSpawner.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TMPro_InstructionOverlay.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TMP_DigitValidator.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TMP_ExampleScript_01.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TMP_FrameRateCounter.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TMP_PhoneNumberValidator.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TMP_TextEventCheck.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TMP_TextEventHandler.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TMP_TextInfoDebugTool.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_A.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/TMP_UiFrameRateCounter.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/VertexColorCycler.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/VertexJitter.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/VertexShakeA.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
+"Assets/UI/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
 -langversion:9.0
 /deterministic
 /optimize+

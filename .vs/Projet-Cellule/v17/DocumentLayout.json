@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|c:\\users\\heryr\\documents\\fichiers unity\\projet-cellule\\assets\\scripts\\enemies\\wardenentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\wardenentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06A341DC-549D-9F98-141A-1EA3FF2C5C63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -58,11 +62,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "WardenEntity.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\WardenEntity.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\WardenEntity.cs",
@@ -75,7 +79,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "HunterEntity.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\HunterEntity.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\HunterEntity.cs",
@@ -88,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "MessengerEntity.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\MessengerEntity.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\MessengerEntity.cs",
@@ -101,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Entity.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\Entity.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\Entity.cs",
@@ -113,21 +117,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Managers\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\GameManager.cs",
               "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Managers\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Managers\\GameManager.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAkwCwAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAA5wCwAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-31T09:58:02.756Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WardenEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\WardenEntity.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\WardenEntity.cs",
+              "ToolTip": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\WardenEntity.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemies\\WardenEntity.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAIwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T12:21:55.848Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "AnimController.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Controller\\AnimController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Controller\\AnimController.cs",
@@ -139,7 +155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "CellController.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Controller\\CellController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Controller\\CellController.cs",
@@ -151,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "PlayerMotherShip.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\PlayerMotherShip.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\PlayerMotherShip.cs",
@@ -163,7 +179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "CameraBehaviour.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Camera\\CameraBehaviour.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Camera\\CameraBehaviour.cs",
@@ -175,7 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "MotherShipController.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Enemies\\Ennemies 2.0\\MotherShipController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Ennemies 2.0\\MotherShipController.cs",
@@ -187,7 +203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "InputReader.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Input\\InputReader.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Input\\InputReader.cs",
@@ -199,7 +215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CameraController.cs",
               "DocumentMoniker": "C:\\Users\\Heryr\\Documents\\Fichiers UNITY\\Projet-Cellule\\Assets\\Scripts\\Player\\Camera\\CameraController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Camera\\CameraController.cs",

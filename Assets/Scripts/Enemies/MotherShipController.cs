@@ -18,8 +18,13 @@ public class EnemyMotherShip : MonoBehaviour
     [Header("Game State Detection")]
     public float GameStateCheckInterval = 2f;
     
+    [Header("References")]
+    [SerializeField] private GameObject RippleParticlePrefab;
+    
     private float messengerSpawnTimer;
     private float gameStateCheckTimer;
+    private float lastRippleTime;
+    private Vector3 lastPosition;
     
     public enum GameState
     {
@@ -42,6 +47,7 @@ public class EnemyMotherShip : MonoBehaviour
         HandleMovement();
         HandleMessengerSpawning();
         UpdateGameState();
+        RippleParticles();
     }
     
     void HandleMovement()
@@ -166,5 +172,22 @@ public class EnemyMotherShip : MonoBehaviour
         
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, MessengerSpawnRadius);
+    }
+    
+    void RippleParticles()
+    {
+        if (RippleParticlePrefab == null) return;
+        
+        float currentSpeed = Vector3.Distance(transform.position, lastPosition) / Time.deltaTime;
+        
+        if (currentSpeed > 0.5f && Time.time - lastRippleTime > 0.1f)
+        {
+            Vector3 ripplePosition = transform.position + Vector3.down * 0.5f;
+            GameObject ripple = Instantiate(RippleParticlePrefab, ripplePosition, Quaternion.identity);
+            Destroy(ripple, 2f);
+            lastRippleTime = Time.time;
+        }
+        
+        lastPosition = transform.position;
     }
 }

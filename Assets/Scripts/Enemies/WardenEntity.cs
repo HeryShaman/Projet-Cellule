@@ -7,6 +7,8 @@ public class WardenEntity : Entity
     private NavMeshAgent Agent;
     private CellEntity OriginCell;
     private Vector3 GuardPosition;
+    private Transform currentTarget;
+    private float lastRippleTime;
 
     [Header("Warden Settings")]
     public float DrainDamage = 0.1f;
@@ -14,6 +16,9 @@ public class WardenEntity : Entity
     public float GuardRadius = 10f;
     public float ChaseSpeedMultiplier = 2f;
     public float PatrolRadius = 8f;
+    
+    [Header("References")]
+    [SerializeField] private GameObject RippleParticlePrefab;
 
     public enum States
     {
@@ -22,7 +27,6 @@ public class WardenEntity : Entity
     }
 
     public States CurrentState = States.Guarding;
-    private Transform currentTarget;
 
     private void Start()
     {
@@ -59,6 +63,8 @@ public class WardenEntity : Entity
                 SurveillanceArea();
                 break;
         }
+        
+        RippleParticles();
     }
 
     void FindOriginCell()
@@ -220,6 +226,19 @@ public class WardenEntity : Entity
         {
             Gizmos.color = Color.magenta;
             Gizmos.DrawLine(transform.position, currentTarget.position);
+        }
+    }
+    
+    void RippleParticles()
+    {
+        if (RippleParticlePrefab == null || Agent == null) return;
+        
+        if (Agent.velocity.magnitude > 0.5f && Time.time - lastRippleTime > 0.1f)
+        {
+            Vector3 ripplePosition = transform.position + Vector3.down * 0.5f;
+            GameObject ripple = Instantiate(RippleParticlePrefab, ripplePosition, Quaternion.identity);
+            Destroy(ripple, 2f);
+            lastRippleTime = Time.time;
         }
     }
 }

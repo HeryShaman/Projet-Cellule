@@ -12,7 +12,12 @@ public class PlayerMotherShip : MonoBehaviour
     public GameObject PlayerPrefab;
     public float RespawnDelay = 3f;
     
+    [Header("References")]
+    [SerializeField] private GameObject RippleParticlePrefab;
+    
     private bool isRespawning = false;
+    private float lastRippleTime;
+    private Vector3 lastPosition;
     
     void Start()
     {
@@ -23,6 +28,7 @@ public class PlayerMotherShip : MonoBehaviour
     {
         MoveBetweenPoints();
         CheckPlayerStatus();
+        RippleParticles();
     }
     
     void MoveBetweenPoints()
@@ -58,5 +64,22 @@ public class PlayerMotherShip : MonoBehaviour
         }
         
         isRespawning = false;
+    }
+    
+    void RippleParticles()
+    {
+        if (RippleParticlePrefab == null) return;
+        
+        float currentSpeed = Vector3.Distance(transform.position, lastPosition) / Time.deltaTime;
+        
+        if (currentSpeed > 0.5f && Time.time - lastRippleTime > 0.1f)
+        {
+            Vector3 ripplePosition = transform.position + Vector3.down * 0.5f;
+            GameObject ripple = Instantiate(RippleParticlePrefab, ripplePosition, Quaternion.identity);
+            Destroy(ripple, 2f);
+            lastRippleTime = Time.time;
+        }
+        
+        lastPosition = transform.position;
     }
 }

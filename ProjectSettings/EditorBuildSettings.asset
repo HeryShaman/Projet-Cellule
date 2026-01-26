@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/sceneUI_Ambre/MainMenu.unity
+    guid: fb7926efcdace1a418579462d3dbc47f
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: e29162bb139365043ac346edc1ed7e50
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

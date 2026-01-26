@@ -159,6 +159,7 @@ MonoBehaviour:
   DrainDamage: 0.1
   SearchRadius: 6
   PatrolRadius: 8
+  RippleParticlePrefab: {fileID: 5497315430024008942, guid: e5ebe08b17d5c1a4b9c13420342da32e, type: 3}
   CurrentState: 0
 --- !u!195 &1183381353783427362
 NavMeshAgent:

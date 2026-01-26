@@ -12,11 +12,14 @@ public class MessengerEntity : Entity
     public int MaxHunters = 3;
     
     [Header("References")]
+    [SerializeField] private GameObject RippleParticlePrefab;
+    
     private Vector3 Target;
     private NavMeshAgent Agent;
     private Vector3 lastTargetPosition;
     private float lastPathRecalculation;
     private CellEntity[] allCells;
+    private float lastRippleTime;
     
     public int CurrentHunters = 0;
 
@@ -57,6 +60,8 @@ public class MessengerEntity : Entity
                 Fleeing();
                 break;
         }
+        
+        RippleParticles();
     }
 
     void Contaminating()
@@ -214,6 +219,19 @@ public class MessengerEntity : Entity
         if (CurrentHunters > 0)
         {
             CurrentHunters--;
+        }
+    }
+    
+    void RippleParticles()
+    {
+        if (RippleParticlePrefab == null || Agent == null) return;
+        
+        if (Agent.velocity.magnitude > 0.5f && Time.time - lastRippleTime > 0.1f)
+        {
+            Vector3 ripplePosition = transform.position + Vector3.down * 0.5f;
+            GameObject ripple = Instantiate(RippleParticlePrefab, ripplePosition, Quaternion.identity);
+            Destroy(ripple, 2f);
+            lastRippleTime = Time.time;
         }
     }
 }

@@ -68,6 +68,12 @@ public class AnimController : MonoBehaviour
             SphericalCore.GetComponent<Renderer>().material = CoreMaterials[1];
             Cytoplasm.GetComponent<Renderer>().material = CytoplasmMaterials[1];
         }
+        else if (Anim.IsDashOnCooldown)
+        {
+            // Dash cooldown material - uniquement pour le core
+            SphericalCore.GetComponent<Renderer>().material = CoreMaterials[2];
+            Cytoplasm.GetComponent<Renderer>().material = CytoplasmMaterials[0];
+        }
         else
         {
             // Normal material
