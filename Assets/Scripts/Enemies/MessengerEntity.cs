@@ -22,6 +22,8 @@ public class MessengerEntity : Entity
     private float lastRippleTime;
     
     public int CurrentHunters = 0;
+    // 🔊 Flag pour savoir si la mort vient du joueur
+    private bool killedByPlayer = false;
 
     public enum States
     {
@@ -214,14 +216,6 @@ public class MessengerEntity : Entity
         }
     }
     
-    public void RemoveHunter()
-    {
-        if (CurrentHunters > 0)
-        {
-            CurrentHunters--;
-        }
-    }
-    
     void RippleParticles()
     {
         if (RippleParticlePrefab == null || Agent == null) return;
@@ -233,5 +227,25 @@ public class MessengerEntity : Entity
             Destroy(ripple, 2f);
             lastRippleTime = Time.time;
         }
+    }
+
+        // 🔊 Détection du kill par le joueur
+    public override void TakeDamage(float amount)
+    {
+        if (amount >= 90f) // dash du joueur = 99f
+            killedByPlayer = true;
+
+        base.TakeDamage(amount);
+    }
+
+    // 🔊 Son uniquement si tuée par le joueur
+    protected override void Die()
+    {
+        // Son uniquement si tuée par le joueur
+        if (killedByPlayer)
+            AudioManager.Instance?.PlayEnemyDeath();
+
+        // On empêche Entity.Die() de jouer le son
+        Destroy(gameObject);
     }
 }

@@ -136,6 +136,13 @@ MonoBehaviour:
   ChaseSpeedMultiplier: 2
   PatrolRadius: 5
   RippleParticlePrefab: {fileID: 5497315430024008942, guid: e5ebe08b17d5c1a4b9c13420342da32e, type: 3}
+  WardenAuraEvent:
+    Guid:
+      Data1: -1509323723
+      Data2: 1338735980
+      Data3: -1031658072
+      Data4: -1584761661
+    Path: event:/Warden
   CurrentState: 0
 --- !u!54 &3202022483137160935
 Rigidbody:

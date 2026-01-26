@@ -58,7 +58,7 @@ MonoBehaviour:
   Accel: 10
   Friction: 0.5
   Gravity: 9
-  DashSpeed: 22.5
+  DashSpeed: 30
   DashTime: 0.5
   DashCooldown: 0.5
   IsDashing: 0

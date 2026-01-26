@@ -14,7 +14,6 @@ public class HunterEntity : Entity
 
     private Transform Target;
     private NavMeshAgent Agent;
-    private GameManager Spawner;
     private CellEntity OriginInfectedCell;
     private MessengerEntity MessengerHost;
     private float lastRippleTime;
@@ -33,7 +32,6 @@ public class HunterEntity : Entity
     {
         CurrentHealth = MaxHealth;
         Agent = GetComponent<NavMeshAgent>();
-        Spawner = FindAnyObjectByType<GameManager>();
         CurrentState = States.SearchInfectedCell;
     }
 
@@ -45,13 +43,6 @@ public class HunterEntity : Entity
     protected override void Update()
     {
         base.Update();
-
-        // Vérifie si le Hunter doit mourir
-        if (CurrentHealth <= 0)
-        {
-            RemoveHunter();
-            return;
-        }
 
         switch (CurrentState)
         {
@@ -73,8 +64,12 @@ public class HunterEntity : Entity
 
     void SearchInfectedCell()
     {
+        // Cherche toutes les cellules infectées dans la scène
+        CellEntity[] allCells = FindObjectsByType<CellEntity>(FindObjectsSortMode.None);
+        CellEntity[] infectedCells = System.Array.FindAll(allCells, cell => cell.CurrentState == CellEntity.States.Infected);
+        
         // Meurt si aucune cellule infectée
-        if (Spawner.InfectedCells.Count == 0)
+        if (infectedCells.Length == 0)
         {
             TakeDamage(MaxHealth);
             return;
@@ -112,16 +107,13 @@ public class HunterEntity : Entity
         CellEntity closestInfected = null;
         float minDist = float.MaxValue;
 
-        foreach (CellEntity infectedCell in Spawner.InfectedCells)
+        foreach (CellEntity infectedCell in infectedCells)
         {
-            if (infectedCell.CurrentState == CellEntity.States.Infected)
+            float dist = Vector3.Distance(transform.position, infectedCell.transform.position);
+            if (dist < minDist)
             {
-                float dist = Vector3.Distance(transform.position, infectedCell.transform.position);
-                if (dist < minDist)
-                {
-                    minDist = dist;
-                    closestInfected = infectedCell;
-                }
+                minDist = dist;
+                closestInfected = infectedCell;
             }
         }
 
@@ -215,14 +207,6 @@ public class HunterEntity : Entity
             TakeDamage(DrainDamage);
         }
     }
-
-    void RemoveHunter()
-    {
-        if (MessengerHost != null)
-        {
-            MessengerHost.RemoveHunter();
-        }
-    }
     
     void RippleParticles()
     {
@@ -235,5 +219,11 @@ public class HunterEntity : Entity
             Destroy(ripple, 2f);
             lastRippleTime = Time.time;
         }
+    }
+
+    protected override void Die()
+    {
+        // Chasseuses : mort silencieuse, aucun son
+        Destroy(gameObject);
     }
 }

@@ -110,6 +110,9 @@ public class CellController : MonoBehaviour
         IsDashOnCooldown = true;
         BounceLock = false;
 
+        // 🔊 Son de dash
+        AudioManager.Instance?.PlayDash();
+
         DashVelocity = Wishvel.magnitude > 0.1f
             ? new Vector3(Wishvel.x, 0, Wishvel.y).normalized
             : transform.forward;
@@ -195,6 +198,9 @@ public class CellController : MonoBehaviour
         // Bounce only on walls (not floor)
         if (hit.normal.y < 0.5f)
         {
+            // 🔊 Son de bump contre un mur
+            AudioManager.Instance?.PlayWallBump();
+
             Vector3 bounce = Vector3.Reflect(Velocity.normalized, hit.normal);
             bounce.y = 0f;
 

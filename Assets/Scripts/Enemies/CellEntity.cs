@@ -45,18 +45,23 @@ public class CellEntity : Entity
         CellController player = other.GetComponent<CellController>();
         MessengerEntity messenger = other.GetComponent<MessengerEntity>();
 
-        // Interaction avec le joueur : si la cellule est contaminée, le joueur peut la soigner
         if (player != null && player.IsDashing)
         {
             if (CurrentState == States.Infected)
             {
                 CurrentState = States.Healthy;
                 UpdateMaterial();
+
+                // 🔊 Son de purification
+                AudioManager.Instance?.PlayCellPurify();
             }
             else if (CurrentState == States.Neutral)
             {
                 CurrentState = States.Healthy;
                 UpdateMaterial();
+
+                // 🔊 Son de purification
+                AudioManager.Instance?.PlayCellPurify();
             }
         }
 
@@ -66,6 +71,9 @@ public class CellEntity : Entity
             CurrentState = States.Infected;
             UpdateMaterial();
             Debug.Log("Cellule contaminée par un messager");
+
+            // 🔊 Son d’infection
+            AudioManager.Instance?.PlayCellInfect();
         }
     }
 
@@ -127,8 +135,16 @@ public class CellEntity : Entity
         if (CurrentHealth < SpawnHealthCost)
             return;
 
-        // Vérifier le nombre d'entités locales
-        if (spawnedHunters >= MaxHunters)
+        // Compter les hunters présents autour de cette cellule
+        HunterEntity[] nearbyHunters = FindObjectsByType<HunterEntity>(FindObjectsSortMode.None);
+        int currentHunters = 0;
+        foreach (HunterEntity hunter in nearbyHunters)
+        {
+            if (Vector3.Distance(hunter.transform.position, transform.position) < 10f)
+                currentHunters++;
+        }
+        
+        if (currentHunters >= MaxHunters)
             return;
 
         CurrentHealth -= SpawnHealthCost;
@@ -137,7 +153,6 @@ public class CellEntity : Entity
         if (HunterEntity != null)
         {
             Instantiate(HunterEntity, transform.position + new Vector3(Random.Range(-3f, 3f), 0, Random.Range(-3f, 3f)), Quaternion.identity);
-            spawnedHunters++;
             Debug.Log("Spawn Hunter depuis cellule infectée");
         }
 
@@ -152,8 +167,16 @@ public class CellEntity : Entity
         if (CurrentHealth < SpawnHealthCost)
             return;
 
-        // Vérifier le nombre d'entités locales
-        if (spawnedWardens >= MaxWardens)
+        // Compter les wardens présents autour de cette cellule
+        WardenEntity[] nearbyWardens = FindObjectsByType<WardenEntity>(FindObjectsSortMode.None);
+        int currentWardens = 0;
+        foreach (WardenEntity warden in nearbyWardens)
+        {
+            if (Vector3.Distance(warden.transform.position, transform.position) < 10f)
+                currentWardens++;
+        }
+        
+        if (currentWardens >= MaxWardens)
             return;
 
         CurrentHealth -= SpawnHealthCost;
@@ -161,7 +184,6 @@ public class CellEntity : Entity
         if (WardenEntity != null)
         {
             Instantiate(WardenEntity, transform.position + new Vector3(Random.Range(-3f, 3f), 0, Random.Range(-3f, 3f)), Quaternion.identity);
-            spawnedWardens++;
             Debug.Log("Spawn Warden depuis cellule saine");
         }
 
@@ -177,16 +199,10 @@ public class CellEntity : Entity
             if (CurrentState == States.Infected)
             {
                 CurrentState = States.Healthy;
-                // Réinitialiser les compteurs quand on passe de infecté à sain
-                spawnedHunters = 0;
-                spawnedWardens = 0;
             }
             else if (CurrentState == States.Healthy)
             {
                 CurrentState = States.Infected;
-                // Réinitialiser les compteurs quand on passe de sain à infecté
-                spawnedHunters = 0;
-                spawnedWardens = 0;
             }
             // Les cellules neutres ne changent pas d'état quand elles meurent
         }
@@ -197,16 +213,10 @@ public class CellEntity : Entity
         if (CurrentState == States.Infected)
         {
             CurrentState = States.Healthy;
-            // Réinitialiser les compteurs quand on passe de infecté à sain
-            spawnedHunters = 0;
-            spawnedWardens = 0;
         }
         else if (CurrentState == States.Healthy)
         {
             CurrentState = States.Infected;
-            // Réinitialiser les compteurs quand on passe de sain à infecté
-            spawnedHunters = 0;
-            spawnedWardens = 0;
         }
         // Les cellules neutres ne changent pas d'état quand elles meurent
     }

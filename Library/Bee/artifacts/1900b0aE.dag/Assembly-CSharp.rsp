@@ -433,6 +433,8 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.59f2/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.59f2/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.59f2/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
+"Assets/AudioManager.cs"
+"Assets/scriptmusicmenu.cs"
 "Assets/Scripts/Enemies/CellEntity.cs"
 "Assets/Scripts/Enemies/Entity.cs"
 "Assets/Scripts/Enemies/HunterEntity.cs"

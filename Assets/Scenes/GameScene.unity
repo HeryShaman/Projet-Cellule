@@ -814,6 +814,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4113835241807445590, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113835241807445590, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113835241807445590, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1570846750880282309, guid: c204cb1b3ac0f6d4e98998e8538755b9, type: 3}
+    - target: {fileID: 4113835241807445590, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113835241807445590, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayUIBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113835241807445590, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113835241807445590, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4982930791025236850, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
       propertyPath: m_Name
       value: MenuPause_Canva
@@ -897,6 +925,62 @@ PrefabInstance:
     - target: {fileID: 9002958771156480971, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018979338924320637, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018979338924320637, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018979338924320637, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1570846750880282309, guid: c204cb1b3ac0f6d4e98998e8538755b9, type: 3}
+    - target: {fileID: 9018979338924320637, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018979338924320637, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayUIBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018979338924320637, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018979338924320637, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072627378832401796, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072627378832401796, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072627378832401796, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1570846750880282309, guid: c204cb1b3ac0f6d4e98998e8538755b9, type: 3}
+    - target: {fileID: 9072627378832401796, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072627378832401796, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayUIClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072627378832401796, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072627378832401796, guid: 8de970396f47df848873d6fe10afdfaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1474,26 +1558,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739aec75c69d55d40be5e934f033480d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHunter: 20
-  MaxMessenger: 10
-  MaxWarden: 3
-  AutoSpawnPlayer: 0
-  PlayerSpawn: {x: 0, y: -20.14, z: 7.3}
   CellSpawns:
   - {x: -27.29, y: 1, z: 0}
   - {x: 23.84, y: 1, z: 0}
   - {x: -1.1, y: 1, z: 0}
   - {x: -1.1, y: 1, z: -17.57}
   - {x: -1.1, y: 1, z: 18.2}
-  WardenNodes: []
-  ActiveHunters: []
-  ActiveMessengers: []
-  ActiveWardens: []
+  CellNumbersPerSpawn: 1
   CellPrefab: {fileID: 1556509479294117012, guid: 9de41460b17562d48acd2d6d646a4222, type: 3}
   PlayerPrefab: {fileID: 2476839493816987752, guid: 0409777888d047b4c89a7f9ac10d6082, type: 3}
   PlayerMotherShipPrefab: {fileID: 1722092728}
-  CellNumbersPerSpawn: 1
-  TimeBeforeInfect: 300
 --- !u!4 &2012813359
 Transform:
   m_ObjectHideFlags: 0

@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4399721694674179268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8222012823703924431}
+  - component: {fileID: 1570846750880282309}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8222012823703924431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4399721694674179268}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 33.57344, y: 18.569412, z: 0.5356141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1570846750880282309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4399721694674179268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d26e1b6eb2f7f64787d7116489aaf99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuMusicEvent:
+    Guid:
+      Data1: -1024864519
+      Data2: 1077559386
+      Data3: -606618707
+      Data4: 154953743
+    Path: event:/Musique Menu
+  GameplayMusicEvent:
+    Guid:
+      Data1: 2051247840
+      Data2: 1292751231
+      Data3: 43725698
+      Data4: 1675790195
+    Path: event:/Musique Gameplay
+  DashEvent:
+    Guid:
+      Data1: -754386185
+      Data2: 1125210677
+      Data3: -52284236
+      Data4: 1215680807
+    Path: event:/Dash
+  WallBumpEvent:
+    Guid:
+      Data1: 256712900
+      Data2: 1246735378
+      Data3: 1912655517
+      Data4: 1763472372
+    Path: event:/Bump
+  PlayerSpawnEvent:
+    Guid:
+      Data1: 932456250
+      Data2: 1341779389
+      Data3: -193519231
+      Data4: -676608539
+    Path: event:/SpawnPlayer
+  EnemyDeathEvent:
+    Guid:
+      Data1: 1172536155
+      Data2: 1265282937
+      Data3: -1021292634
+      Data4: -1337550037
+    Path: event:/Dying
+  CellInfectEvent:
+    Guid:
+      Data1: -2105659739
+      Data2: 1272271292
+      Data3: -1088553557
+      Data4: -198306434
+    Path: event:/ChangeINFECTE
+  CellPurifyEvent:
+    Guid:
+      Data1: -883286033
+      Data2: 1261798617
+      Data3: 64977575
+      Data4: -1353628758
+    Path: event:/ChangeSAIN
+  UIClickEvent:
+    Guid:
+      Data1: 476323520
+      Data2: 1261242229
+      Data3: -168704892
+      Data4: 560362572
+    Path: event:/UI click
+  UIBackEvent:
+    Guid:
+      Data1: -1513103296
+      Data2: 1217317215
+      Data3: -388179792
+      Data4: 1201186262
+    Path: event:/UI back

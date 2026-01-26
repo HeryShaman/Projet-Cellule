@@ -162,7 +162,7 @@ MonoBehaviour:
   MaxWardens: 3
   HealthyMaterial: {fileID: 2100000, guid: 715e24d52defd644a83bdd1327afd358, type: 2}
   InfectedMaterial: {fileID: -876546973899608171, guid: 4654b1b9eed3e974fb321fcffddf4f1d, type: 3}
-  NeutralMaterial: {fileID: -876546973899608171, guid: ad72243712e65154587041ccfabf7bca, type: 3}
+  NeutralMaterial: {fileID: 2100000, guid: eb0968b7fd6c8964f9c5b2a9000b1989, type: 2}
   HunterEntity: {fileID: 6697464548979796304, guid: b1639930d7ecd5f4a97c5b8533f2f6b3, type: 3}
   WardenEntity: {fileID: 434199223026733806, guid: 31bf7058730eae54cb8cdf87f5e9feab, type: 3}
   CurrentState: 0

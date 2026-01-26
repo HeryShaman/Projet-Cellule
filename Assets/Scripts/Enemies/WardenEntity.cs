@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,6 +21,12 @@ public class WardenEntity : Entity
     [Header("References")]
     [SerializeField] private GameObject RippleParticlePrefab;
 
+    // 🔊 Aura FMOD
+    private FMOD.Studio.EventInstance auraInstance;
+    private bool auraPlaying = false;
+    public EventReference WardenAuraEvent; // event:/warden
+
+
     public enum States
     {
         Guarding,
@@ -41,6 +48,10 @@ public class WardenEntity : Entity
             GuardPosition = OriginCell.transform.position;
             CurrentState = States.Guarding;
         }
+
+        // 🔊 Création de l’aura FMOD
+        if (!WardenAuraEvent.IsNull)
+            auraInstance = RuntimeManager.CreateInstance(WardenAuraEvent);
     }
 
     protected override void Update()
@@ -65,6 +76,44 @@ public class WardenEntity : Entity
         }
         
         RippleParticles();
+        UpdateAura();
+    }
+
+        // 🔊 Mise à jour de l’aura FMOD
+    void UpdateAura()
+    {
+        if (auraInstance.isValid())
+        {
+            // Mise à jour de la position 3D
+            auraInstance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
+
+            // Détection du joueur
+            CellController player = FindFirstObjectByType<CellController>();
+
+            if (player != null)
+            {
+                float dist = Vector3.Distance(transform.position, player.transform.position);
+
+                if (dist < 12f && !auraPlaying)
+                {
+                    auraInstance.start();
+                    auraPlaying = true;
+                }
+                else if (dist >= 12f && auraPlaying)
+                {
+                    auraInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    auraPlaying = false;
+                }
+            }
+            else
+            {
+                if (auraPlaying)
+                {
+                    auraInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    auraPlaying = false;
+                }
+            }
+        }
     }
 
     void FindOriginCell()
