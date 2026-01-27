@@ -13,6 +13,7 @@ public class MessengerEntity : Entity
     
     [Header("References")]
     [SerializeField] private GameObject RippleParticlePrefab;
+    [SerializeField] private GameObject DeathParticlePrefab;
     
     private Vector3 Target;
     private NavMeshAgent Agent;
@@ -228,6 +229,17 @@ public class MessengerEntity : Entity
             lastRippleTime = Time.time;
         }
     }
+    
+    void DeathParticules()
+    {
+        if (DeathParticlePrefab == null) return;
+        
+        if (CurrentHealth <= 0f)
+        {
+            GameObject deathParticle = Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(deathParticle, 0.5f);
+        }
+    }
 
         // 🔊 Détection du kill par le joueur
     public override void TakeDamage(float amount)
@@ -241,11 +253,21 @@ public class MessengerEntity : Entity
     // 🔊 Son uniquement si tuée par le joueur
     protected override void Die()
     {
+        // Désactiver l'entité
+        gameObject.SetActive(false);
+        
+        // Jouer les particules de mort
+        if (DeathParticlePrefab != null)
+        {
+            GameObject deathParticle = Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(deathParticle, 0.5f);
+        }
+        
         // Son uniquement si tuée par le joueur
         if (killedByPlayer)
             AudioManager.Instance?.PlayEnemyDeath();
-
-        // On empêche Entity.Die() de jouer le son
-        Destroy(gameObject);
+        
+        // Détruire l'entité après 0.5 secondes
+        Destroy(gameObject, 0.5f);
     }
 }

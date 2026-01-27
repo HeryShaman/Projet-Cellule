@@ -54,12 +54,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7756503bd2cb53d418bbfaf75670e860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 8
+  MaxSpeed: 15
   Accel: 10
   Friction: 0.5
   Gravity: 9
-  DashSpeed: 30
-  DashTime: 0.5
+  DashSpeed: 40
+  DashTime: 1.5
   DashCooldown: 0.5
   IsDashing: 0
   IsDashOnCooldown: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   CurrentHealth: 0
   DamageRegenDelay: 2
   LastDamageTimer: 0
+  DeathParticlePrefab: {fileID: 0}
   Wishvel: {x: 0, y: 0}
   Velocity: {x: 0, y: 0, z: 0}
   BounceLock: 0
@@ -117,6 +118,7 @@ MonoBehaviour:
   DashTrail: {fileID: 4192162255876038296}
   Anim: {fileID: 3305166735921713630}
   RippleParticlePrefab: {fileID: 5497315430024008942, guid: e5ebe08b17d5c1a4b9c13420342da32e, type: 3}
+  DeathParticlePrefab: {fileID: 3710616217510290288, guid: 0ae728ce65c94f245b905638c796cb32, type: 3}
 --- !u!143 &7162175263300639104
 CharacterController:
   m_ObjectHideFlags: 0

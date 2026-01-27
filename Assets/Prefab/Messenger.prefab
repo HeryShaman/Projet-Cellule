@@ -135,6 +135,7 @@ MonoBehaviour:
   PathRecalculationInterval: 0.5
   MaxHunters: 3
   RippleParticlePrefab: {fileID: 5497315430024008942, guid: e5ebe08b17d5c1a4b9c13420342da32e, type: 3}
+  DeathParticlePrefab: {fileID: 3710616217510290288, guid: 0ae728ce65c94f245b905638c796cb32, type: 3}
   CurrentHunters: 0
   CurrentState: 0
 --- !u!54 &775862287617768513
@@ -175,7 +176,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 10
-  m_Acceleration: 8
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 300
   m_StoppingDistance: 0

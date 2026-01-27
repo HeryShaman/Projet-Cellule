@@ -20,6 +20,7 @@ public class WardenEntity : Entity
     
     [Header("References")]
     [SerializeField] private GameObject RippleParticlePrefab;
+    [SerializeField] private GameObject DeathParticlePrefab;
 
     // 🔊 Aura FMOD
     private FMOD.Studio.EventInstance auraInstance;
@@ -289,5 +290,32 @@ public class WardenEntity : Entity
             Destroy(ripple, 2f);
             lastRippleTime = Time.time;
         }
+    }
+    
+    void DeathParticules()
+    {
+        if (DeathParticlePrefab == null) return;
+        
+        if (CurrentHealth <= 0f)
+        {
+            GameObject deathParticle = Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(deathParticle, 0.5f);
+        }
+    }
+
+    protected override void Die()
+    {
+        // Désactiver l'entité
+        gameObject.SetActive(false);
+        
+        // Jouer les particules de mort
+        if (DeathParticlePrefab != null)
+        {
+            GameObject deathParticle = Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(deathParticle, 0.5f);
+        }
+        
+        // Détruire l'entité après 0.5 secondes
+        Destroy(gameObject, 0.5f);
     }
 }

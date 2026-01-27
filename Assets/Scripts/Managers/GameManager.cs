@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             Gizmos.color = Color.green; // Couleur du draw = green
             foreach (Vector3 pos in CellSpawns)
             {
-                Gizmos.DrawWireSphere(pos, 1f);
+                Gizmos.DrawWireSphere(pos, 3f);
             }
         }
     }

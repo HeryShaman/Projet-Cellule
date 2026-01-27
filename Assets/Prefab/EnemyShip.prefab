@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3059351561147301125}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 43}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3059351561147301125}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -3942208044751350275, guid: 43c38c689feac5a40a632fbe8e15476f, type: 3}
 --- !u!23 &4800595348947505731
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d9682e740897f084a90ab147f006629a, type: 2}
+  - {fileID: -876546973899608171, guid: 4654b1b9eed3e974fb321fcffddf4f1d, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,10 +104,10 @@ MonoBehaviour:
   PointB: {x: 0, y: 0, z: 0}
   MoveSpeed: 3
   MessengerPrefab: {fileID: 6701230996886309562, guid: f90e82520420cb649962e50e261ffa5e, type: 3}
-  MessengerSpawnInterval: 5
+  MessengerSpawnInterval: 6
   MessengersPerWave: 3
-  MessengerSpawnRadius: 3
-  MaxMessengers: 6
+  MessengerSpawnRadius: 2
+  MaxMessengers: 3
   GameStateCheckInterval: 2
   RippleParticlePrefab: {fileID: 5497315430024008942, guid: e5ebe08b17d5c1a4b9c13420342da32e, type: 3}
   CurrentGameState: 1

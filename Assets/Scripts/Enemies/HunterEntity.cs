@@ -11,6 +11,7 @@ public class HunterEntity : Entity
 
     [Header("Références")]
     [SerializeField] private GameObject RippleParticlePrefab;
+    [SerializeField] private GameObject DeathParticlePrefab;
 
     private Transform Target;
     private NavMeshAgent Agent;
@@ -221,9 +222,30 @@ public class HunterEntity : Entity
         }
     }
 
+    void DeathParticules()
+    {
+        if (DeathParticlePrefab == null) return;
+        
+        if (CurrentHealth <= 0f)
+        {
+            GameObject deathParticle = Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(deathParticle, 0.5f);
+        }
+    }
+
     protected override void Die()
     {
-        // Chasseuses : mort silencieuse, aucun son
-        Destroy(gameObject);
+        // Désactiver l'entité
+        gameObject.SetActive(false);
+        
+        // Jouer les particules de mort
+        if (DeathParticlePrefab != null)
+        {
+            GameObject deathParticle = Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(deathParticle, 0.5f);
+        }
+        
+        // Détruire l'entité après 0.5 secondes
+        Destroy(gameObject, 0.5f);
     }
 }

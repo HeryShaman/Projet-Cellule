@@ -14,6 +14,7 @@ public class AnimController : MonoBehaviour
     [SerializeField] private TrailRenderer DashTrail;
     [SerializeField] private CellController Anim;
     [SerializeField] private GameObject RippleParticlePrefab;
+    [SerializeField] private GameObject DeathParticlePrefab;
 
     private float lastRippleTime;
 
@@ -47,10 +48,6 @@ public class AnimController : MonoBehaviour
             SphericalCore.localPosition = Vector3.Lerp(SphericalCore.localPosition, Vector3.zero, Time.deltaTime * 5f);
     }
 
-    void CytoplasmAnimation()
-    {
-
-    }
 
     void UpdateMaterials()
     {
@@ -92,6 +89,17 @@ public class AnimController : MonoBehaviour
             GameObject ripple = Instantiate(RippleParticlePrefab, ripplePosition, Quaternion.identity);
             Destroy(ripple, 2f);
             lastRippleTime = Time.time;
+        }
+    }
+    
+    void DeathParticules()
+    {
+        if (DeathParticlePrefab == null || Anim == null) return;
+        
+        if (Anim.CurrentHealth <= 0f)
+        {
+            GameObject deathParticle = Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(deathParticle, 0.5f);
         }
     }
 
